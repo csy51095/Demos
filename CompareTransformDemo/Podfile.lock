@@ -1,0 +1,16 @@
+PODS:
+  - PinYin4Objc (1.1.1)
+
+DEPENDENCIES:
+  - PinYin4Objc
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PinYin4Objc
+
+SPEC CHECKSUMS:
+  PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
+
+PODFILE CHECKSUM: 17f64a3d97e1989e98d8e0221d89c1f330f5bfc7
+
+COCOAPODS: 1.6.1

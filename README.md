@@ -1,2 +1,2 @@
-# DemoInBlog
-博客中所涉及到的代码
+# Demo
+CompareTransformDemo ：汉字转拼音方法的比较
