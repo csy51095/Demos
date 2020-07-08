@@ -20,6 +20,10 @@
 		CD6D620A24B5D87100A8958D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD6D620C24B5D87100A8958D /* InfoPlist.strings */; };
 		CD6D621024B5D8CE00A8958D /* LocalizedFile.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD6D621224B5D8CE00A8958D /* LocalizedFile.strings */; };
 		CD6D621624B5D95600A8958D /* MOThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D621524B5D95600A8958D /* MOThemeManager.m */; };
+		CD6D621A24B5DF3A00A8958D /* MOMusicPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D621924B5DF3A00A8958D /* MOMusicPlayer.m */; };
+		CD6D621D24B5DF8300A8958D /* MOSong.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D621C24B5DF8300A8958D /* MOSong.m */; };
+		CD6D622024B5DF9700A8958D /* MOPlayList.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D621F24B5DF9700A8958D /* MOPlayList.m */; };
+		CD6D622324B5DFBB00A8958D /* MOPlayListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D622224B5DFBB00A8958D /* MOPlayListManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,14 @@
 		CD6D621324B5D8D200A8958D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LocalizedFile.strings; sourceTree = "<group>"; };
 		CD6D621424B5D95600A8958D /* MOThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOThemeManager.h; sourceTree = "<group>"; };
 		CD6D621524B5D95600A8958D /* MOThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOThemeManager.m; sourceTree = "<group>"; };
+		CD6D621824B5DF3A00A8958D /* MOMusicPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOMusicPlayer.h; sourceTree = "<group>"; };
+		CD6D621924B5DF3A00A8958D /* MOMusicPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOMusicPlayer.m; sourceTree = "<group>"; };
+		CD6D621B24B5DF8300A8958D /* MOSong.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOSong.h; sourceTree = "<group>"; };
+		CD6D621C24B5DF8300A8958D /* MOSong.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOSong.m; sourceTree = "<group>"; };
+		CD6D621E24B5DF9700A8958D /* MOPlayList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOPlayList.h; sourceTree = "<group>"; };
+		CD6D621F24B5DF9700A8958D /* MOPlayList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOPlayList.m; sourceTree = "<group>"; };
+		CD6D622124B5DFBB00A8958D /* MOPlayListManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOPlayListManager.h; sourceTree = "<group>"; };
+		CD6D622224B5DFBB00A8958D /* MOPlayListManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOPlayListManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,7 @@
 		CD6D61A124B5CAFD00A8958D /* MusicPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CD6D621724B5DF1F00A8958D /* MusicPlayer */,
 				CD6D620324B5D5FE00A8958D /* Resources */,
 				CD6D61C424B5D33E00A8958D /* Utils */,
 				CD6D61C324B5D33100A8958D /* Global */,
@@ -149,6 +162,21 @@
 				CD6D621224B5D8CE00A8958D /* LocalizedFile.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CD6D621724B5DF1F00A8958D /* MusicPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				CD6D621824B5DF3A00A8958D /* MOMusicPlayer.h */,
+				CD6D621924B5DF3A00A8958D /* MOMusicPlayer.m */,
+				CD6D622124B5DFBB00A8958D /* MOPlayListManager.h */,
+				CD6D622224B5DFBB00A8958D /* MOPlayListManager.m */,
+				CD6D621E24B5DF9700A8958D /* MOPlayList.h */,
+				CD6D621F24B5DF9700A8958D /* MOPlayList.m */,
+				CD6D621B24B5DF8300A8958D /* MOSong.h */,
+				CD6D621C24B5DF8300A8958D /* MOSong.m */,
+			);
+			path = MusicPlayer;
 			sourceTree = "<group>";
 		};
 		FFB37F7AD9FB44AFBE7F93C2 /* Frameworks */ = {
@@ -277,13 +305,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6D621D24B5DF8300A8958D /* MOSong.m in Sources */,
+				CD6D622324B5DFBB00A8958D /* MOPlayListManager.m in Sources */,
 				CD6D61A424B5CAFD00A8958D /* AppDelegate.m in Sources */,
 				CD6D621624B5D95600A8958D /* MOThemeManager.m in Sources */,
 				CD6D61C824B5D33E00A8958D /* ClassFactory.m in Sources */,
 				CD6D61B524B5CAFF00A8958D /* main.m in Sources */,
+				CD6D621A24B5DF3A00A8958D /* MOMusicPlayer.m in Sources */,
 				CD6D61C124B5CFB900A8958D /* MOBaseViewController.m in Sources */,
 				CD6D61A724B5CAFD00A8958D /* SceneDelegate.m in Sources */,
 				CD6D61BD24B5CF5100A8958D /* MOHomePageController.m in Sources */,
+				CD6D622024B5DF9700A8958D /* MOPlayList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -423,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

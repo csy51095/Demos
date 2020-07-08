@@ -11,6 +11,7 @@
 
 #import <NerdyUI/NerdyUI.h>
 #import <Masonry/Masonry.h>
+#import <YYModel.h>
 
 #import "ZWSingleton.h"
 

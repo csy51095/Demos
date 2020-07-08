@@ -7,6 +7,7 @@
 //
 
 #import "MOHomePageController.h"
+#import "MOPlayListManager.h"
 
 @interface MOHomePageController ()
 
@@ -18,6 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [MOPlayListManager sharedInstance];
     
 }
 
