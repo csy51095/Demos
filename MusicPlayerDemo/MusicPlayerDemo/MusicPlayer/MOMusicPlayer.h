@@ -6,14 +6,18 @@
 //  Copyright © 2020 Mo. All rights reserved.
 //
 
+#define MusicPlayer ([MOMusicPlayer sharedInstance])
+
 #import <Foundation/Foundation.h>
-@class MOPlayList, MOSong;
+@class MOSong;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MOMusicPlayer : NSObject
 
-@property (nonatomic, weak) MOPlayList *playList;
+INTERFACE_SINGLETON(MOMusicPlayer)
+
+@property (nonatomic, weak) NSArray <MOSong *> *songs;
 @property (nonatomic, weak) MOSong *currentSong;
 
 - (void)play;

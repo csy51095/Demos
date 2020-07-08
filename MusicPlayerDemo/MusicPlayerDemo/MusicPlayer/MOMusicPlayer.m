@@ -10,4 +10,6 @@
 
 @implementation MOMusicPlayer
 
+IMPLEMENTATION_SINGLETON(MOMusicPlayer)
+
 @end

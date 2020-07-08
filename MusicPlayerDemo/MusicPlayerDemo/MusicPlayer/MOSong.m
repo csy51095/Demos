@@ -10,10 +10,20 @@
 
 @implementation MOSong
 
-+ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper {
-    return @{@"coverPath": @"cover",
-             @"mp3Path" : @"mp3",
-             @"lrcPath" : @"lrc"};
+
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    
+    NSString *bundlePath = NSBundle.mainBundle.resourcePath;
+    
+    self.coverPath = bundlePath.ap([self convertCorrectPath:dic[@"cover"]]);
+    self.mp3Path = bundlePath.ap([self convertCorrectPath:dic[@"mp3"]]);
+    self.lrcPath = bundlePath.ap([self convertCorrectPath:dic[@"lrc"]]);
+    
+    return YES;
+}
+
+- (NSString *)convertCorrectPath:(NSString *)path {
+    return path.subReplace(@"music", @"music.bundle");
 }
 
 @end
