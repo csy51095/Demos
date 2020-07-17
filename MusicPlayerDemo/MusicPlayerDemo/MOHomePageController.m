@@ -21,38 +21,50 @@
 
 @implementation MOHomePageController
 
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     MOPlayList *playList = [MOPlayListManager sharedInstance].allPlayLists.firstObject;
     MusicPlayer.songs = playList.allSongs;
+    
+    [self setupTestUI];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (!self.isShowed) {
         self.isShowed = YES;
-        [self setupNewFeatureVC];
+        MONewFeatureController *featureVC = MONewFeatureController.new;
+        [self presentViewController:featureVC animated:NO completion:nil];
     }
 }
 
-- (void)setupNewFeatureVC {
-    MONewFeatureController *featureVC = MONewFeatureController.new;
-    [self presentViewController:featureVC animated:NO completion:nil];
+
+
+- (void)setupTestUI {
+    Style(@"btn").fnt(16).color(@"blue").fitSize;
+    
+    UIButton *preBtn = Button.str(@"Pre").styles(@"btn").onClick(^{
+        NSLog(@"%s", __func__);
+        [MusicPlayer previous];
+    }).touchInsets(-10,-10,-10,-10);
+    
+    UIButton *playBtn = Button.str(@"Play").styles(@"btn").onClick(^{
+        NSLog(@"%s", __func__);
+        [MusicPlayer play];
+    }).touchInsets(-10,-10,-10,-10);
+    
+    UIButton *nextBtn = Button.str(@"Next").styles(@"btn").onClick(^{
+        NSLog(@"%s", __func__);
+        [MusicPlayer next];
+    }).touchInsets(-20,-20,-20,-20);
+    
+    HorStack(NERSpring, preBtn, @(50), playBtn, @(50), nextBtn, NERSpring).embedIn(self.view, NERNull,0, 30, 0);
+    
 }
 
-
-- (BOOL)prefersStatusBarHidden {
-    return NO;
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
