@@ -31,9 +31,9 @@ PODS:
   - NerdyUI/Private (1.2.1)
   - NerdyUI/Public (1.2.1):
     - NerdyUI/Private
-  - SDWebImage (5.8.1):
-    - SDWebImage/Core (= 5.8.1)
-  - SDWebImage/Core (5.8.1)
+  - SDWebImage (5.8.4):
+    - SDWebImage/Core (= 5.8.4)
+  - SDWebImage/Core (5.8.4)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -61,9 +61,9 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   NerdyUI: ae4506046b544a5cdc0873a58c1ece61b29631d0
-  SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
+  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: ebd60bc82fc7e738a81687906b8fb7cb6f7a3159
+PODFILE CHECKSUM: 5161ab5f5475cb3b8c05a69a77bdf708827dad98
 
 COCOAPODS: 1.9.1

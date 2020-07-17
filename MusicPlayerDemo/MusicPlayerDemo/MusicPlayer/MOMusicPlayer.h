@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 INTERFACE_SINGLETON(MOMusicPlayer)
 
-@property (nonatomic, weak) NSArray <MOSong *> *songs;
-@property (nonatomic, weak) MOSong *currentSong;
+@property (nonatomic, copy) NSArray <MOSong *> *songs;
+@property (nonatomic, copy) MOSong *currentSong;
 
 - (void)play;
 - (void)pause;

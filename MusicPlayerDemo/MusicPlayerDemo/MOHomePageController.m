@@ -24,6 +24,11 @@
     MOPlayList *playList = [MOPlayListManager sharedInstance].allPlayLists.firstObject;
     
     MusicPlayer.songs = playList.allSongs;
+    
+    
+    
+    
+    
 }
 
 /*
