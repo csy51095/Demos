@@ -11,7 +11,11 @@
 #import "MOPlayList.h"
 #import "MOMusicPlayer.h"
 
+#import "MONewFeatureController.h"
+
 @interface MOHomePageController ()
+
+@property (nonatomic, assign) BOOL isShowed;
 
 @end
 
@@ -19,16 +23,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     MOPlayList *playList = [MOPlayListManager sharedInstance].allPlayLists.firstObject;
-    
     MusicPlayer.songs = playList.allSongs;
-    
-    
-    
-    
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (!self.isShowed) {
+        self.isShowed = YES;
+        [self setupNewFeatureVC];
+    }
+}
+
+- (void)setupNewFeatureVC {
+    MONewFeatureController *featureVC = MONewFeatureController.new;
+    [self presentViewController:featureVC animated:NO completion:nil];
+}
+
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
 }
 
 /*

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		65AA27481D3E2DDD79004544 /* Pods_MusicPlayerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46681CA8E630274584C1313C /* Pods_MusicPlayerDemo.framework */; };
+		CD39786224C1A996003303F0 /* PPT90200.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CD39786124C1A996003303F0 /* PPT90200.mp4 */; };
+		CD39786524C1AC9A003303F0 /* MONewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39786424C1AC9A003303F0 /* MONewFeatureController.m */; };
 		CD6D61A424B5CAFD00A8958D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D61A324B5CAFD00A8958D /* AppDelegate.m */; };
 		CD6D61A724B5CAFD00A8958D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D61A624B5CAFD00A8958D /* SceneDelegate.m */; };
 		CD6D61AF24B5CAFF00A8958D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6D61AE24B5CAFF00A8958D /* Assets.xcassets */; };
@@ -30,6 +32,9 @@
 		1C5601BDCF0410BBBF8C0310 /* Pods-MusicPlayerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayerDemo.debug.xcconfig"; path = "Target Support Files/Pods-MusicPlayerDemo/Pods-MusicPlayerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		46681CA8E630274584C1313C /* Pods_MusicPlayerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicPlayerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60FF15D26BA9EBDA23AC3533 /* Pods-MusicPlayerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayerDemo.release.xcconfig"; path = "Target Support Files/Pods-MusicPlayerDemo/Pods-MusicPlayerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		CD39786124C1A996003303F0 /* PPT90200.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PPT90200.mp4; sourceTree = "<group>"; };
+		CD39786324C1AC9A003303F0 /* MONewFeatureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MONewFeatureController.h; sourceTree = "<group>"; };
+		CD39786424C1AC9A003303F0 /* MONewFeatureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MONewFeatureController.m; sourceTree = "<group>"; };
 		CD6D619F24B5CAFD00A8958D /* MusicPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6D61A224B5CAFD00A8958D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD6D61A324B5CAFD00A8958D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +122,8 @@
 				CD6D61A624B5CAFD00A8958D /* SceneDelegate.m */,
 				CD6D61BB24B5CF5100A8958D /* MOHomePageController.h */,
 				CD6D61BC24B5CF5100A8958D /* MOHomePageController.m */,
+				CD39786324C1AC9A003303F0 /* MONewFeatureController.h */,
+				CD39786424C1AC9A003303F0 /* MONewFeatureController.m */,
 				CD6D61AE24B5CAFF00A8958D /* Assets.xcassets */,
 				CD6D61B024B5CAFF00A8958D /* LaunchScreen.storyboard */,
 				CD6D61B324B5CAFF00A8958D /* Info.plist */,
@@ -157,6 +164,7 @@
 		CD6D620324B5D5FE00A8958D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD39786124C1A996003303F0 /* PPT90200.mp4 */,
 				CD6D620624B5D62700A8958D /* music.bundle */,
 				CD6D620C24B5D87100A8958D /* InfoPlist.strings */,
 				CD6D621224B5D8CE00A8958D /* LocalizedFile.strings */,
@@ -252,6 +260,7 @@
 				CD6D621024B5D8CE00A8958D /* LocalizedFile.strings in Resources */,
 				CD6D620A24B5D87100A8958D /* InfoPlist.strings in Resources */,
 				CD6D61AF24B5CAFF00A8958D /* Assets.xcassets in Resources */,
+				CD39786224C1A996003303F0 /* PPT90200.mp4 in Resources */,
 				CD6D620724B5D62700A8958D /* music.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +323,7 @@
 				CD6D621A24B5DF3A00A8958D /* MOMusicPlayer.m in Sources */,
 				CD6D61C124B5CFB900A8958D /* MOBaseViewController.m in Sources */,
 				CD6D61A724B5CAFD00A8958D /* SceneDelegate.m in Sources */,
+				CD39786524C1AC9A003303F0 /* MONewFeatureController.m in Sources */,
 				CD6D61BD24B5CF5100A8958D /* MOHomePageController.m in Sources */,
 				CD6D622024B5DF9700A8958D /* MOPlayList.m in Sources */,
 			);
