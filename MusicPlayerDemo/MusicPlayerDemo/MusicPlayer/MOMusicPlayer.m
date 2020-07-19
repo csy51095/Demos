@@ -11,7 +11,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-@interface MOMusicPlayer ()
+@interface MOMusicPlayer () <AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -59,6 +59,7 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     
     MOSong *song = [_songs objectAtIndex:index];
     self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Url(song.mp3Path) error:nil];
+    self.audioPlayer.delegate = self;
     [self.audioPlayer play];
     
     self.selectedIndex = index;
@@ -94,7 +95,10 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     }
 }
 
-
+#pragma mark - AVAudioPlayerDelegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    [self next];
+}
 
 
 - (void)dealloc {

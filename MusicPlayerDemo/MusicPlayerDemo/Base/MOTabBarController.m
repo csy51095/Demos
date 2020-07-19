@@ -76,9 +76,9 @@
 
 
 - (void)setupMusicBar {
-    Style(@"btn").fnt(16).color(@"blue").fitSize;
+    Style(@"btn").fnt(16).color(@"#F5FFFA").fitSize;
     
-    UIButton *preBtn = Button.str(@"Pre").styles(@"btn").onClick(^{
+    UIButton *preBtn = Button.str(LANGUAGE(@"Pre")).styles(@"btn").onClick(^{
         [MusicPlayer previous];
     }).touchInsets(-10,-10,-10,-10);
     
@@ -93,7 +93,7 @@
     }).touchInsets(-10,-10,-10,-10);
     self.playBtn = playBtn;
     
-    UIButton *nextBtn = Button.str(@"Next").styles(@"btn").onClick(^{
+    UIButton *nextBtn = Button.str(LANGUAGE(@"Next")).styles(@"btn").onClick(^{
         [MusicPlayer next];
     }).touchInsets(-20,-20,-20,-20);
     
@@ -121,7 +121,7 @@
 }
 
 - (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
-    self.playBtn.str(status == MOMusicPlayerStatusPlaying? @"pause": @"play");
+    self.playBtn.str(status == MOMusicPlayerStatusPlaying? LANGUAGE(@"pause"): LANGUAGE(@"play"));
 }
 
 - (void)dealloc {

@@ -34,11 +34,11 @@
 - (void)setupUI {
     self.view.bgColor(@"0xF5DEB3");
     
-    UIButton *preBtn = Button.img(@"btn_pre_normal").onClick(^{
+    UIButton *preBtn = Button.img(IMAGE(@"btn_pre_normal")).onClick(^{
         [MusicPlayer previous];
     });
     
-    UIButton *playBtn = Button.img(@"btn_play_normal").selectedImg(@"btn_pause_normal").onClick(^{
+    UIButton *playBtn = Button.img(IMAGE(@"btn_play_normal")).selectedImg(IMAGE(@"btn_pause_normal")).onClick(^{
         if (MusicPlayer.status == MOMusicPlayerStatusPause) {
             [MusicPlayer play];
         } else {
@@ -47,7 +47,7 @@
     });
     self.playBtn = playBtn;
     
-    UIButton *nextBtn = Button.img(@"btn_next_normal").onClick(^{
+    UIButton *nextBtn = Button.img(IMAGE(@"btn_next_normal")).onClick(^{
         [MusicPlayer next];
     });
     
