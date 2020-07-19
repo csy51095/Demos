@@ -21,6 +21,7 @@
     UIWindowScene *windowScene = (UIWindowScene *)scene;
     self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
     self.window.frame = UIScreen.mainScreen.bounds;
+    self.window.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
     self.window.rootViewController = MOTabBarController.new;
     [self.window makeKeyAndVisible];
 }

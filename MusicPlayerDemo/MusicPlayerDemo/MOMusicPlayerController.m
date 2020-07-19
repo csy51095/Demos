@@ -10,4 +10,15 @@
 
 @implementation MOMusicPlayerController
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.modalPresentationStyle = UIModalPresentationFullScreen;
+    }
+    return self;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

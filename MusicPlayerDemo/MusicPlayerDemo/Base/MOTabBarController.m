@@ -88,8 +88,9 @@
         [MusicPlayer next];
     }).touchInsets(-20,-20,-20,-20);
     
-    UIView *musicBar = View.bgColor(@"gray").fixHeight(50).embedIn(self.view, NERNull, 20, 54, 20).onClick(^{
-        
+    UIView *musicBar = View.bgColor(@"#F5DEB3").borderRadius(25).fixHeight(50).embedIn(self.view, NERNull, 20, 54, 20).onClick(^{
+        MOMusicPlayerController *vc = [MOMusicPlayerController new];
+        [self presentViewController:vc animated:YES completion:nil];
     });
     
     HorStack(NERSpring, preBtn, @(50), playBtn, @(50), nextBtn, NERSpring).embedIn(musicBar).centerAlignment;
