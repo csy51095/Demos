@@ -16,7 +16,7 @@
 #import "MOMusicPlayerController.h"
 
 @interface MOTabBarController ()
-
+@property (nonatomic, weak) UIButton *playBtn;
 @end
 
 @implementation MOTabBarController
@@ -35,7 +35,9 @@
     MOPlayList *playList = [MOPlayListManager sharedInstance].allPlayLists.firstObject;
     MusicPlayer.songs = playList.allSongs;
     
-    [self setupTestUI];
+    [self setupNotification];
+    [self setupMusicBar];
+    [self refreshUIWithPlayerStatus:MusicPlayer.status];
 }
 
 - (void)setupAppearance {
@@ -73,16 +75,23 @@
 }
 
 
-- (void)setupTestUI {
+- (void)setupMusicBar {
     Style(@"btn").fnt(16).color(@"blue").fitSize;
     
     UIButton *preBtn = Button.str(@"Pre").styles(@"btn").onClick(^{
         [MusicPlayer previous];
     }).touchInsets(-10,-10,-10,-10);
     
-    UIButton *playBtn = Button.str(@"Play").styles(@"btn").onClick(^{
-        [MusicPlayer play];
+    
+    CGSize size = [@"pause" sizeWithAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:16]}];
+    UIButton *playBtn = Button.styles(@"btn").fixWidth(size.width).onClick(^{
+        if (MusicPlayer.status == MOMusicPlayerStatusPause) {
+            [MusicPlayer play];
+        } else {
+            [MusicPlayer pause];
+        }
     }).touchInsets(-10,-10,-10,-10);
+    self.playBtn = playBtn;
     
     UIButton *nextBtn = Button.str(@"Next").styles(@"btn").onClick(^{
         [MusicPlayer next];
@@ -94,6 +103,29 @@
     });
     
     HorStack(NERSpring, preBtn, @(50), playBtn, @(50), nextBtn, NERSpring).embedIn(musicBar).centerAlignment;
+}
+
+
+#pragma mark - notification
+- (void)setupNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicPlayerStatusDidChangedNotification:) name:MOMusicPlayerStatusDidChangedNotification object:nil];
+}
+
+- (void)teardownNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)musicPlayerStatusDidChangedNotification:(NSNotification *)notification {
+    MOMusicPlayerStatus status = [notification.userInfo[kMusicPlayerStatus] intValue];
+    [self refreshUIWithPlayerStatus:status];
+}
+
+- (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
+    self.playBtn.str(status == MOMusicPlayerStatusPlaying? @"pause": @"play");
+}
+
+- (void)dealloc {
+    [self teardownNotification];
 }
 
 

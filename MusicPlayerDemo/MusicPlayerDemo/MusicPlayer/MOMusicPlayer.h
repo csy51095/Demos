@@ -8,10 +8,19 @@
 
 #define MusicPlayer ([MOMusicPlayer sharedInstance])
 
+#define kMusicPlayerStatus                          @"kMusicPlayerStatus"
+#define MOMusicPlayerStatusDidChangedNotification   @"MOMusicPlayerStatusDidChangedNotification"
+
+
 #import <Foundation/Foundation.h>
 @class MOSong;
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSUInteger, MOMusicPlayerStatus) {
+    MOMusicPlayerStatusPlaying,
+    MOMusicPlayerStatusPause,
+};
 
 @interface MOMusicPlayer : NSObject
 
@@ -19,6 +28,7 @@ INTERFACE_SINGLETON(MOMusicPlayer)
 
 @property (nonatomic, copy) NSArray <MOSong *> *songs;
 @property (nonatomic, copy) MOSong *currentSong;
+@property (nonatomic, assign) MOMusicPlayerStatus status;
 
 - (void)play;
 - (void)pause;
