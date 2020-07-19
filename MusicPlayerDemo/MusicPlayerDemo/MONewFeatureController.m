@@ -37,7 +37,13 @@
     
     CMTime duration = self.player.currentItem.asset.duration;
     CGFloat time = duration.value *1.0 / duration.timescale;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    CGFloat playTime;
+#ifdef DEBUG
+    playTime = 1;
+#else
+    playTime = time;
+#endif
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(playTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [layer removeFromSuperlayer];
         [self dismissViewControllerAnimated:YES completion:^{
             self.player = nil;

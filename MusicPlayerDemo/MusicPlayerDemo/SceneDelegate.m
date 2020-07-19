@@ -7,7 +7,7 @@
 //
 
 #import "SceneDelegate.h"
-#import "MOHomePageController.h"
+#import "MOTabBarController.h"
 
 @interface SceneDelegate ()
 
@@ -21,7 +21,7 @@
     UIWindowScene *windowScene = (UIWindowScene *)scene;
     self.window = [[UIWindow alloc] initWithWindowScene:windowScene];
     self.window.frame = UIScreen.mainScreen.bounds;
-    self.window.rootViewController = MOHomePageController.new;
+    self.window.rootViewController = MOTabBarController.new;
     [self.window makeKeyAndVisible];
 }
 
