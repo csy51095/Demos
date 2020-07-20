@@ -21,6 +21,8 @@
 @property (nonatomic, weak) UILabel *totalTimeLab;
 @property (nonatomic, weak) UISlider *slider;
 
+@property (nonatomic, weak) UIImageView *backgroundImgView;
+
 @end
 
 @implementation MOMusicPlayerController
@@ -41,8 +43,6 @@
 }
 
 - (void)setupUI {
-    self.view.bgColor(@"0xF5DEB3");
-    
     NSString *wordColorString = @"0xBC8F8F";
     
     UIButton *closeBtn = Button.str(@"关闭").color(wordColorString).fnt(20).fixWH(50, 50).onClick(^{
@@ -74,6 +74,7 @@
     
     UISlider *slider = [[UISlider alloc] init];
     [slider setThumbImage:Img(IMAGE(@"slider-block")) forState:UIControlStateNormal];
+    [slider addTarget:self action:@selector(sliderValueDidChanged:) forControlEvents:UIControlEventValueChanged];
     self.slider = slider;
     
     CGSize size = [@"00:00" sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}];
@@ -103,8 +104,21 @@
     
     NERStack *bottomStack = HorStack(NERSpring, preBtn, @(30), playBtn, @(30), nextBtn, NERSpring);
     
+    UIImageView *backgroundImgView = UIImageView.new.embedIn(self.view);
+    backgroundImgView.userInteractionEnabled = YES;
+    self.backgroundImgView = backgroundImgView;
+    
+    UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    effectView.embedIn(backgroundImgView);
+    
     VerStack(topStack, @(10), coverImgView, @(20), titleLab, @(20), singerLab,
-             NERSpring, sliderStack, @(20), bottomStack).embedIn(self.view, 20, 20, 50, 20);
+             NERSpring, sliderStack, @(20), bottomStack).embedIn(effectView.contentView, 20, 20, 50, 20);
+}
+
+#pragma mark - target
+- (void)sliderValueDidChanged:(UISlider *)slider {
+    [MusicPlayer setCurrentTime: slider.value *MusicPlayer.totalTime];
 }
 
 
@@ -147,7 +161,9 @@
 
 
 - (void)refreshUIWithSong:(MOSong *)song {
-    _coverImgView.image = [UIImage imageWithContentsOfFile:song.coverPath];
+    UIImage *coverImage = [UIImage imageWithContentsOfFile:song.coverPath];
+    _backgroundImgView.image = coverImage;
+    _coverImgView.image = coverImage;
     _titleLab.text = song.name;
     _singerLab.text = song.singer;
 }

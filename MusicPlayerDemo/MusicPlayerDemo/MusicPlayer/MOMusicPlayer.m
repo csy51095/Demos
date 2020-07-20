@@ -86,6 +86,12 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     [self playAtIndex:self.selectedIndex +1];
 }
 
+- (void)setCurrentTime:(NSTimeInterval)currentTime {
+    if (_audioPlayer) {    
+        [_audioPlayer setCurrentTime:currentTime];
+    }
+}
+
 #pragma mark - property
 - (MOSong *)currentSong {
     if (!self.songs || self.selectedIndex >= self.songs.count) {

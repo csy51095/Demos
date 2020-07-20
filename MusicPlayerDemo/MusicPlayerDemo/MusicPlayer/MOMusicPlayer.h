@@ -48,6 +48,8 @@ INTERFACE_SINGLETON(MOMusicPlayer)
 - (void)previous;
 - (void)next;
 
+- (void)setCurrentTime:(NSTimeInterval)currentTime;
+
 @end
 
 NS_ASSUME_NONNULL_END
