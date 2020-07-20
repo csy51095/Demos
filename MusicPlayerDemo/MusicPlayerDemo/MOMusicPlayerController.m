@@ -42,8 +42,16 @@
     [super viewDidLoad];
     [self setupUI];
     [self setupNotification];
-    [self refreshUIWithPlayerStatus:MusicPlayer.status];
     [self refreshUIWithSong:MusicPlayer.currentSong];
+    [self refreshUIWithPlayerStatus:MusicPlayer.status];
+    
+    // 若歌曲已经在播放，进入控制器立即 startRotation 是无效的，需要延迟调用
+    // 原因：vc modal方式的动画 与 核心动画 内部有冲突
+    if (MusicPlayer.status == MOMusicPlayerStatusPlaying) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self startRotation];
+        });
+    }
 }
 
 - (void)setupUI {
@@ -142,18 +150,17 @@
     }
     
     //new、pre、next
-    [layer removeAllAnimations];
     animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     animation.fromValue = @(0);
     animation.toValue = @(M_PI *2);
     animation.duration = 20;
     animation.repeatCount = CGFLOAT_MAX;
-    [self.coverImgView.layer addAnimation:animation forKey:kAnimationKey];
+    [layer addAnimation:animation forKey:kAnimationKey];
 }
 
 - (void)stopRotation {
-    CAAnimation *ani = [self.coverImgView.layer animationForKey:kAnimationKey];
-    if (ani) {
+    CAAnimation *animation = [self.coverImgView.layer animationForKey:kAnimationKey];
+    if (animation) {
         [self.coverImgView.layer pauseAnimation];
     }
 }
@@ -194,6 +201,8 @@
 - (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
     self.playBtn.selected = status == MOMusicPlayerStatusPlaying;
     if (status == MOMusicPlayerStatusPlaying) {
+        // 若歌曲已经在播放，进入控制器立即 startRotation 是无效的
+        // 原因：vc modal方式的动画 与 核心动画 内部有冲突
         [self startRotation];
     } else {
         [self stopRotation];
@@ -210,6 +219,7 @@
 }
 
 - (void)dealloc {
+    [self.coverImgView.layer removeAllAnimations];
     [self teardownNotification];
 }
 
