@@ -6,8 +6,12 @@
 //  Copyright © 2020 Mo. All rights reserved.
 //
 
+#define kAnimationKey   @"Rotation"
+
+
 #import "MOMusicPlayerController.h"
 #import "MOMusicPlayer.h"
+#import "CALayer+AnimationPause.h"
 
 @interface MOMusicPlayerController ()
 
@@ -126,6 +130,33 @@
     [MusicPlayer setCurrentTime: slider.value *MusicPlayer.totalTime];
 }
 
+#pragma mark - animation
+- (void)startRotation {
+    CALayer *layer = self.coverImgView.layer;
+    CABasicAnimation *animation = [layer animationForKey:kAnimationKey];
+    
+    // pasue
+    if (animation && layer.speed == 0) {
+        [layer resumeAnimation];
+        return;
+    }
+    
+    //new、pre、next
+    [layer removeAllAnimations];
+    animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = @(0);
+    animation.toValue = @(M_PI *2);
+    animation.duration = 20;
+    animation.repeatCount = CGFLOAT_MAX;
+    [self.coverImgView.layer addAnimation:animation forKey:kAnimationKey];
+}
+
+- (void)stopRotation {
+    CAAnimation *ani = [self.coverImgView.layer animationForKey:kAnimationKey];
+    if (ani) {
+        [self.coverImgView.layer pauseAnimation];
+    }
+}
 
 #pragma mark - notification
 - (void)setupNotification {
@@ -162,6 +193,11 @@
 
 - (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
     self.playBtn.selected = status == MOMusicPlayerStatusPlaying;
+    if (status == MOMusicPlayerStatusPlaying) {
+        [self startRotation];
+    } else {
+        [self stopRotation];
+    }
 }
 
 
