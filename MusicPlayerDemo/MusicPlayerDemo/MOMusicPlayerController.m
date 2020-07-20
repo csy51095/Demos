@@ -170,6 +170,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicPlayerStatusDidChangedNotification:) name:MOMusicPlayerStatusDidChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicPlayerCurrentSongDidChangedNotification:) name:MOMusicPlayerCurrentSongDidChangedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicPlayerCurrentTimeDidChangedNotification:) name:MOMusicPlayerCurrentTimeDidChangedNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForegroundNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)teardownNotification {
@@ -197,6 +199,13 @@
     self.totalTimeLab.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:totalTime]];
     self.slider.value = currentTime / totalTime;
 }
+
+- (void)applicationWillEnterForegroundNotification:(NSNotification *)notification {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self startRotation];
+    });
+}
+
 
 - (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
     self.playBtn.selected = status == MOMusicPlayerStatusPlaying;
