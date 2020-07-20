@@ -62,7 +62,7 @@
                                   @(5),Label.str(@"|").color(Theme_TextColorString),@(5), lrcBtn,
                                   NERSpring, shareBtn);
     
-    UIImageView *coverImgView = ImageView.fixWH(100, 100).img(@"white").borderRadius(50);
+    UIImageView *coverImgView = ImageView.fixWH(250, 250).img(@"white").borderRadius(125);
     self.coverImgView = coverImgView;
     
     UILabel *titleLab = Label.color(@"white").fnt(20);
@@ -78,8 +78,8 @@
     self.slider = slider;
     
     CGSize size = [@"00:00" sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]}];
-    UILabel *currentTimeLab = Label.fnt(14).fixWidth(size.width).color(@"white");
-    UILabel *totalTimeLab = Label.fnt(14).fixWidth(size.width).color(@"white");
+    UILabel *currentTimeLab = Label.fnt(14).str(@"00:00").fixWidth(size.width).color(@"white");
+    UILabel *totalTimeLab = Label.fnt(14).str(@"00:00").fixWidth(size.width).color(@"white");
     self.currentTimeLab = currentTimeLab;
     self.totalTimeLab = totalTimeLab;
     
@@ -112,8 +112,13 @@
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
     effectView.embedIn(backgroundImgView);
     
-    VerStack(topStack, @(10), coverImgView, @(20), titleLab, @(20), singerLab,
-             NERSpring, sliderStack, @(20), bottomStack).embedIn(effectView.contentView, 20, 20, 50, 20);
+    VerStack(topStack,
+             @(30),
+             HorStack(NERSpring,coverImgView,NERSpring).centerAlignment,
+             @(30),
+             titleLab, @(15),
+             singerLab,@(20),
+             sliderStack, @(20), bottomStack).embedIn(effectView.contentView, 20, 20, 40, 20);
 }
 
 #pragma mark - target
