@@ -11,6 +11,9 @@
 #define LANGUAGE(__KEY__)   ([_ThemeManager localizedStringWithKey:(__KEY__)])
 #define IMAGE(__NAME__)     ([_ThemeManager imageName: (__NAME__)])
 
+#define Theme_ButtonColor       WheatColor
+#define Theme_TextColorString   @"0xF5DEB3"
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN

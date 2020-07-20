@@ -16,7 +16,8 @@ IMPLEMENTATION_SINGLETON(MOThemeManager)
 }
 
 - (UIImage *)imageName:(NSString *)imageName {
-    return [UIImage imageNamed:imageName];
+    UIImage *image = [[UIImage imageNamed:imageName] imageWithTintColor:WheatColor];
+    return image;
 }
 
 @end

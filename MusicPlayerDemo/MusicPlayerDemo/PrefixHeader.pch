@@ -18,4 +18,6 @@
 #import "MOBaseViewController.h"
 #import "MOThemeManager.h"
 
+#define WheatColor  Color(@"#F5DEB3")
+
 #endif /* PrefixHeader_pch */

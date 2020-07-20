@@ -43,24 +43,23 @@
 }
 
 - (void)setupUI {
-    NSString *wordColorString = @"0xBC8F8F";
     
-    UIButton *closeBtn = Button.str(@"关闭").color(wordColorString).fnt(20).fixWH(50, 50).onClick(^{
+    UIButton *closeBtn = Button.str(@"关闭").color(Theme_TextColorString).fnt(20).fixWH(50, 50).onClick(^{
         [self dismissViewControllerAnimated:YES completion:nil];
     }).touchInsets(-10,-10,-10,-10);
     
-    UIButton *shareBtn = Button.str(@"分享").color(wordColorString).fnt(20).fixWH(50,50).onClick(^{
+    UIButton *shareBtn = Button.str(@"分享").color(Theme_TextColorString).fnt(20).fixWH(50,50).onClick(^{
         
     }).touchInsets(-10,-10,-10,-10);
     
-    Style(@"tagBtn").color(wordColorString).selectedColor(@"white").fnt(15);
+    Style(@"tagBtn").color(Theme_TextColorString).selectedColor(@"white").fnt(15);
     UIButton *recommandBtn = Button.styles(@"tagBtn").str(LANGUAGE(@"推荐"));
     UIButton *songBtn = Button.styles(@"tagBtn").str(LANGUAGE(@"歌曲"));
     UIButton *lrcBtn = Button.styles(@"tagBtn").str(LANGUAGE(@"歌词"));
     
     NERStack *topStack = HorStack(closeBtn, NERSpring, recommandBtn,
-                                  @(5),Label.str(@"|").color(wordColorString),@(5), songBtn,
-                                  @(5),Label.str(@"|").color(wordColorString),@(5), lrcBtn,
+                                  @(5),Label.str(@"|").color(Theme_TextColorString),@(5), songBtn,
+                                  @(5),Label.str(@"|").color(Theme_TextColorString),@(5), lrcBtn,
                                   NERSpring, shareBtn);
     
     UIImageView *coverImgView = ImageView.fixWH(100, 100).img(@"white").borderRadius(50);
@@ -73,6 +72,7 @@
     self.singerLab = singerLab;
     
     UISlider *slider = [[UISlider alloc] init];
+    [slider setMinimumTrackTintColor:Theme_ButtonColor];
     [slider setThumbImage:Img(IMAGE(@"slider-block")) forState:UIControlStateNormal];
     [slider addTarget:self action:@selector(sliderValueDidChanged:) forControlEvents:UIControlEventValueChanged];
     self.slider = slider;
