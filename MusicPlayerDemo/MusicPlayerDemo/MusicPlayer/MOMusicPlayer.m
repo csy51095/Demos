@@ -7,7 +7,6 @@
 //
 
 #import "MOMusicPlayer.h"
-#import "MOSong.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -15,6 +14,8 @@
 
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, assign) NSInteger selectedIndex;
+
+@property (nonatomic, strong) CADisplayLink *observerTimer;
 
 @end
 
@@ -25,11 +26,11 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
 - (instancetype)init {
     if (self = [super init]) {
         _audioPlayer = nil;
+        _observerTimer = nil;
         self.status = MOMusicPlayerStatusPause;
         
         [self addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:NULL];
-        
-        
+        [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionNew context:NULL];
     }
     return self;
 }
@@ -85,6 +86,20 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     [self playAtIndex:self.selectedIndex +1];
 }
 
+#pragma mark - property
+- (MOSong *)currentSong {
+    if (!self.songs || self.selectedIndex >= self.songs.count) {
+        return nil;
+    }
+    return [self.songs objectAtIndex:self.selectedIndex];
+}
+
+- (NSTimeInterval)totalTime {
+    if (_audioPlayer) {
+        return _audioPlayer.duration;
+    }
+    return 0.0;
+}
 
 #pragma mark - kvo
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -92,8 +107,43 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
         [[NSNotificationCenter defaultCenter] postNotificationName:MOMusicPlayerStatusDidChangedNotification
                                                             object:self
                                                           userInfo:@{kMusicPlayerStatus :@(self.status)}];
+        if (self.status == MOMusicPlayerStatusPlaying) {
+            [self startObserveCurrentTime];
+        } else {
+            [self stopObserveCurrentTime];
+        }
+        
+    } else if ([keyPath isEqualToString:@"selectedIndex"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MOMusicPlayerCurrentSongDidChangedNotification
+                                                            object:self
+                                                          userInfo:@{kMusicPlayerCurrentSong: self.currentSong}];
     }
 }
+
+
+#pragma mark - Timer
+- (void)startObserveCurrentTime {
+    [self stopObserveCurrentTime];
+    _observerTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(observeProcess:)];
+    [_observerTimer addToRunLoop:NSRunLoop.currentRunLoop forMode:NSDefaultRunLoopMode];
+}
+
+- (void)stopObserveCurrentTime {
+    if (_observerTimer) {
+        if (![_observerTimer isPaused]) {
+            [_observerTimer invalidate];
+        }
+        _observerTimer = nil;
+    }
+}
+
+- (void)observeProcess:(CADisplayLink *)timer {
+    [[NSNotificationCenter defaultCenter] postNotificationName:MOMusicPlayerCurrentTimeDidChangedNotification
+                                                        object:self
+                                                      userInfo:@{kCurrentTime: @(_audioPlayer.currentTime),
+                                                                 kTotalTime: @(_audioPlayer.duration)}];
+}
+
 
 #pragma mark - AVAudioPlayerDelegate
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
@@ -103,6 +153,7 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"status"];
+    [self removeObserver:self forKeyPath:@"selectedIndex"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

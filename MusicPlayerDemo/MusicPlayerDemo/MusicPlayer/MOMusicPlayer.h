@@ -8,12 +8,23 @@
 
 #define MusicPlayer ([MOMusicPlayer sharedInstance])
 
-#define kMusicPlayerStatus                          @"kMusicPlayerStatus"
-#define MOMusicPlayerStatusDidChangedNotification   @"MOMusicPlayerStatusDidChangedNotification"
+/** 播放器状态改变 播放/暂停 */
+#define kMusicPlayerStatus                              @"kMusicPlayerStatus"
+#define MOMusicPlayerStatusDidChangedNotification       @"MOMusicPlayerStatusDidChangedNotification"
+
+/** 歌曲变更 */
+#define kMusicPlayerCurrentSong                         @"kMusicPlayerCurrentSong"
+#define MOMusicPlayerCurrentSongDidChangedNotification  @"MOMusicPlayerCurrentSongDidChangedNotification"
+
+/** 时间进度 */
+#define kCurrentTime                                    @"kCurrentTime"
+#define kTotalTime                                      @"kTotalTime"
+#define MOMusicPlayerCurrentTimeDidChangedNotification  @"MOMusicPlayerCurrentTimeDidChangedNotification"
+
 
 
 #import <Foundation/Foundation.h>
-@class MOSong;
+#import "MOSong.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,8 +38,10 @@ typedef NS_ENUM(NSUInteger, MOMusicPlayerStatus) {
 INTERFACE_SINGLETON(MOMusicPlayer)
 
 @property (nonatomic, copy) NSArray <MOSong *> *songs;
-@property (nonatomic, copy) MOSong *currentSong;
+@property (nonatomic, strong, readonly) MOSong *currentSong;
 @property (nonatomic, assign) MOMusicPlayerStatus status;
+
+@property (nonatomic, assign, readonly) NSTimeInterval totalTime;
 
 - (void)play;
 - (void)pause;
