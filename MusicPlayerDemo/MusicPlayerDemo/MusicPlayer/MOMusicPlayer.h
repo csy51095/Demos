@@ -41,14 +41,13 @@ INTERFACE_SINGLETON(MOMusicPlayer)
 @property (nonatomic, strong, readonly) MOSong *currentSong;
 @property (nonatomic, assign) MOMusicPlayerStatus status;
 
+@property (nonatomic, assign) NSTimeInterval currentTime;
 @property (nonatomic, assign, readonly) NSTimeInterval totalTime;
 
 - (void)play;
 - (void)pause;
 - (void)previous;
 - (void)next;
-
-- (void)setCurrentTime:(NSTimeInterval)currentTime;
 
 @end
 

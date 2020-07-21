@@ -44,6 +44,7 @@
     [self setupNotification];
     [self refreshUIWithSong:MusicPlayer.currentSong];
     [self refreshUIWithPlayerStatus:MusicPlayer.status];
+    [self refreshUIWithCurrentTime:MusicPlayer.currentTime totalTime:MusicPlayer.totalTime];
     
     // 若歌曲已经在播放，进入控制器立即 startRotation 是无效的，需要延迟调用
     // 原因：vc modal方式的动画 与 核心动画 内部有冲突
@@ -192,12 +193,7 @@
     NSTimeInterval currentTime = [notification.userInfo[kCurrentTime] doubleValue];
     NSTimeInterval totalTime = [notification.userInfo[kTotalTime] doubleValue];
     
-    NSDateFormatter *formatter = NSDateFormatter.new;
-    formatter.dateFormat = @"mm:ss";
-    
-    self.currentTimeLab.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:currentTime]];
-    self.totalTimeLab.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:totalTime]];
-    self.slider.value = currentTime / totalTime;
+    [self refreshUIWithCurrentTime:currentTime totalTime:totalTime];
 }
 
 - (void)applicationWillEnterForegroundNotification:(NSNotification *)notification {
@@ -225,6 +221,15 @@
     _coverImgView.image = coverImage;
     _titleLab.text = song.name;
     _singerLab.text = song.singer;
+}
+
+- (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime {
+    NSDateFormatter *formatter = NSDateFormatter.new;
+    formatter.dateFormat = @"mm:ss";
+    
+    self.currentTimeLab.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:currentTime]];
+    self.totalTimeLab.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:totalTime]];
+    self.slider.value = currentTime / totalTime;
 }
 
 - (void)dealloc {

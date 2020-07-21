@@ -86,12 +86,6 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     [self playAtIndex:self.selectedIndex +1];
 }
 
-- (void)setCurrentTime:(NSTimeInterval)currentTime {
-    if (_audioPlayer) {    
-        [_audioPlayer setCurrentTime:currentTime];
-    }
-}
-
 #pragma mark - property
 - (MOSong *)currentSong {
     if (!self.songs || self.selectedIndex >= self.songs.count) {
@@ -106,6 +100,20 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     }
     return 0.0;
 }
+
+- (void)setCurrentTime:(NSTimeInterval)currentTime {
+    if (_audioPlayer) {
+        [_audioPlayer setCurrentTime:currentTime];
+    }
+}
+
+- (NSTimeInterval)currentTime {
+    if (_audioPlayer) {
+        return _audioPlayer.currentTime;
+    }
+    return 0.0;
+}
+
 
 #pragma mark - kvo
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
