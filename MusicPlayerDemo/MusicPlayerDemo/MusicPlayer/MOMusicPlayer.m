@@ -118,7 +118,7 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
 #pragma mark - kvo
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"status"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:MOMusicPlayerStatusDidChangedNotification
+        [NotificationCenter postNotificationName:MOMusicPlayerStatusDidChangedNotification
                                                             object:self
                                                           userInfo:@{kMusicPlayerStatus :@(self.status)}];
         if (self.status == MOMusicPlayerStatusPlaying) {
@@ -128,7 +128,7 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
         }
         
     } else if ([keyPath isEqualToString:@"selectedIndex"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:MOMusicPlayerCurrentSongDidChangedNotification
+        [NotificationCenter postNotificationName:MOMusicPlayerCurrentSongDidChangedNotification
                                                             object:self
                                                           userInfo:@{kMusicPlayerCurrentSong: self.currentSong}];
     }
@@ -152,7 +152,7 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
 }
 
 - (void)observeProcess:(CADisplayLink *)timer {
-    [[NSNotificationCenter defaultCenter] postNotificationName:MOMusicPlayerCurrentTimeDidChangedNotification
+    [NotificationCenter postNotificationName:MOMusicPlayerCurrentTimeDidChangedNotification
                                                         object:self
                                                       userInfo:@{kCurrentTime: @(_audioPlayer.currentTime),
                                                                  kTotalTime: @(_audioPlayer.duration)}];
@@ -168,7 +168,7 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"status"];
     [self removeObserver:self forKeyPath:@"selectedIndex"];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NotificationCenter removeObserver:self];
 }
 
 @end

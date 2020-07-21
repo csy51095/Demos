@@ -18,6 +18,10 @@
 #import "MOBaseViewController.h"
 #import "MOThemeManager.h"
 
+#import "MOMusicPlayer.h"
+
+#import "MONotificationName.h"
+
 #define WheatColor  Color(@"#F5DEB3")
 
 #endif /* PrefixHeader_pch */

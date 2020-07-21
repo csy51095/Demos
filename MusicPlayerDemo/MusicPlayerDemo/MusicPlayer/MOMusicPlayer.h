@@ -8,21 +8,6 @@
 
 #define MusicPlayer ([MOMusicPlayer sharedInstance])
 
-/** 播放器状态改变 播放/暂停 */
-#define kMusicPlayerStatus                              @"kMusicPlayerStatus"
-#define MOMusicPlayerStatusDidChangedNotification       @"MOMusicPlayerStatusDidChangedNotification"
-
-/** 歌曲变更 */
-#define kMusicPlayerCurrentSong                         @"kMusicPlayerCurrentSong"
-#define MOMusicPlayerCurrentSongDidChangedNotification  @"MOMusicPlayerCurrentSongDidChangedNotification"
-
-/** 时间进度 */
-#define kCurrentTime                                    @"kCurrentTime"
-#define kTotalTime                                      @"kTotalTime"
-#define MOMusicPlayerCurrentTimeDidChangedNotification  @"MOMusicPlayerCurrentTimeDidChangedNotification"
-
-
-
 #import <Foundation/Foundation.h>
 #import "MOSong.h"
 

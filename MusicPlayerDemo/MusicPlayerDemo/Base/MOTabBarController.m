@@ -108,11 +108,11 @@
 
 #pragma mark - notification
 - (void)setupNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(musicPlayerStatusDidChangedNotification:) name:MOMusicPlayerStatusDidChangedNotification object:nil];
+    [NotificationCenter addObserver:self selector:@selector(musicPlayerStatusDidChangedNotification:) name:MOMusicPlayerStatusDidChangedNotification object:nil];
 }
 
 - (void)teardownNotification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NotificationCenter removeObserver:self];
 }
 
 - (void)musicPlayerStatusDidChangedNotification:(NSNotification *)notification {

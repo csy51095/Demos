@@ -10,11 +10,13 @@
 		65AA27481D3E2DDD79004544 /* Pods_MusicPlayerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46681CA8E630274584C1313C /* Pods_MusicPlayerDemo.framework */; };
 		CD39786224C1A996003303F0 /* PPT90200.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CD39786124C1A996003303F0 /* PPT90200.mp4 */; };
 		CD39786524C1AC9A003303F0 /* MONewFeatureController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39786424C1AC9A003303F0 /* MONewFeatureController.m */; };
-		CD39786B24C46481003303F0 /* MOMusicPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39786A24C46481003303F0 /* MOMusicPlayerController.m */; };
 		CD39786E24C46768003303F0 /* MOTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39786D24C46768003303F0 /* MOTabBarController.m */; };
 		CD39787124C4741B003303F0 /* MONaviController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39787024C4741B003303F0 /* MONaviController.m */; };
 		CD39787724C5CECA003303F0 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39787524C5CECA003303F0 /* UIImage+Tint.m */; };
 		CD39787D24C5FB21003303F0 /* CALayer+AnimationPause.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39787C24C5FB21003303F0 /* CALayer+AnimationPause.m */; };
+		CD39788124C6E883003303F0 /* MOMusicPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39787F24C6E883003303F0 /* MOMusicPlayerController.m */; };
+		CD39788A24C6ED38003303F0 /* MOMusicPanelSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39788924C6ED38003303F0 /* MOMusicPanelSongView.m */; };
+		CD39788D24C70847003303F0 /* MOMusicPanelLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39788C24C70847003303F0 /* MOMusicPanelLrcView.m */; };
 		CD6D61A424B5CAFD00A8958D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D61A324B5CAFD00A8958D /* AppDelegate.m */; };
 		CD6D61A724B5CAFD00A8958D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D61A624B5CAFD00A8958D /* SceneDelegate.m */; };
 		CD6D61AF24B5CAFF00A8958D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6D61AE24B5CAFF00A8958D /* Assets.xcassets */; };
@@ -40,8 +42,6 @@
 		CD39786124C1A996003303F0 /* PPT90200.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PPT90200.mp4; sourceTree = "<group>"; };
 		CD39786324C1AC9A003303F0 /* MONewFeatureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MONewFeatureController.h; sourceTree = "<group>"; };
 		CD39786424C1AC9A003303F0 /* MONewFeatureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MONewFeatureController.m; sourceTree = "<group>"; };
-		CD39786924C46481003303F0 /* MOMusicPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOMusicPlayerController.h; sourceTree = "<group>"; };
-		CD39786A24C46481003303F0 /* MOMusicPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOMusicPlayerController.m; sourceTree = "<group>"; };
 		CD39786C24C46768003303F0 /* MOTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOTabBarController.h; sourceTree = "<group>"; };
 		CD39786D24C46768003303F0 /* MOTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOTabBarController.m; sourceTree = "<group>"; };
 		CD39786F24C4741B003303F0 /* MONaviController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MONaviController.h; sourceTree = "<group>"; };
@@ -50,6 +50,13 @@
 		CD39787624C5CECA003303F0 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		CD39787B24C5FB21003303F0 /* CALayer+AnimationPause.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+AnimationPause.h"; sourceTree = "<group>"; };
 		CD39787C24C5FB21003303F0 /* CALayer+AnimationPause.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+AnimationPause.m"; sourceTree = "<group>"; };
+		CD39787F24C6E883003303F0 /* MOMusicPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOMusicPlayerController.m; sourceTree = "<group>"; };
+		CD39788024C6E883003303F0 /* MOMusicPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOMusicPlayerController.h; sourceTree = "<group>"; };
+		CD39788824C6ED38003303F0 /* MOMusicPanelSongView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOMusicPanelSongView.h; sourceTree = "<group>"; };
+		CD39788924C6ED38003303F0 /* MOMusicPanelSongView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOMusicPanelSongView.m; sourceTree = "<group>"; };
+		CD39788B24C70847003303F0 /* MOMusicPanelLrcView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOMusicPanelLrcView.h; sourceTree = "<group>"; };
+		CD39788C24C70847003303F0 /* MOMusicPanelLrcView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOMusicPanelLrcView.m; sourceTree = "<group>"; };
+		CD39789124C70BDA003303F0 /* MONotificationName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MONotificationName.h; sourceTree = "<group>"; };
 		CD6D619F24B5CAFD00A8958D /* MusicPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6D61A224B5CAFD00A8958D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD6D61A324B5CAFD00A8958D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -105,6 +112,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CD39787E24C6E883003303F0 /* MusicPlayerController */ = {
+			isa = PBXGroup;
+			children = (
+				CD39788024C6E883003303F0 /* MOMusicPlayerController.h */,
+				CD39787F24C6E883003303F0 /* MOMusicPlayerController.m */,
+				CD39788824C6ED38003303F0 /* MOMusicPanelSongView.h */,
+				CD39788924C6ED38003303F0 /* MOMusicPanelSongView.m */,
+				CD39788B24C70847003303F0 /* MOMusicPanelLrcView.h */,
+				CD39788C24C70847003303F0 /* MOMusicPanelLrcView.m */,
+			);
+			path = MusicPlayerController;
+			sourceTree = "<group>";
+		};
 		CD6D619624B5CAFD00A8958D = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +146,7 @@
 		CD6D61A124B5CAFD00A8958D /* MusicPlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CD39787E24C6E883003303F0 /* MusicPlayerController */,
 				CD6D621724B5DF1F00A8958D /* MusicPlayer */,
 				CD6D620324B5D5FE00A8958D /* Resources */,
 				CD6D61C424B5D33E00A8958D /* Utils */,
@@ -137,8 +158,6 @@
 				CD6D61A624B5CAFD00A8958D /* SceneDelegate.m */,
 				CD6D61BB24B5CF5100A8958D /* MOHomePageController.h */,
 				CD6D61BC24B5CF5100A8958D /* MOHomePageController.m */,
-				CD39786924C46481003303F0 /* MOMusicPlayerController.h */,
-				CD39786A24C46481003303F0 /* MOMusicPlayerController.m */,
 				CD39786324C1AC9A003303F0 /* MONewFeatureController.h */,
 				CD39786424C1AC9A003303F0 /* MONewFeatureController.m */,
 				CD6D61AE24B5CAFF00A8958D /* Assets.xcassets */,
@@ -168,6 +187,7 @@
 			children = (
 				CD6D621424B5D95600A8958D /* MOThemeManager.h */,
 				CD6D621524B5D95600A8958D /* MOThemeManager.m */,
+				CD39789124C70BDA003303F0 /* MONotificationName.h */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -351,10 +371,12 @@
 				CD6D61B524B5CAFF00A8958D /* main.m in Sources */,
 				CD6D621A24B5DF3A00A8958D /* MOMusicPlayer.m in Sources */,
 				CD6D61C124B5CFB900A8958D /* MOBaseViewController.m in Sources */,
+				CD39788124C6E883003303F0 /* MOMusicPlayerController.m in Sources */,
+				CD39788D24C70847003303F0 /* MOMusicPanelLrcView.m in Sources */,
 				CD6D61A724B5CAFD00A8958D /* SceneDelegate.m in Sources */,
-				CD39786B24C46481003303F0 /* MOMusicPlayerController.m in Sources */,
 				CD39786524C1AC9A003303F0 /* MONewFeatureController.m in Sources */,
 				CD6D61BD24B5CF5100A8958D /* MOHomePageController.m in Sources */,
+				CD39788A24C6ED38003303F0 /* MOMusicPanelSongView.m in Sources */,
 				CD6D622024B5DF9700A8958D /* MOPlayList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
