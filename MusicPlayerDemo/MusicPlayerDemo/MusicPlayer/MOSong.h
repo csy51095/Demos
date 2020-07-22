@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class MOLrc;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *coverPath;
 @property (nonatomic, copy) NSString *mp3Path;
 @property (nonatomic, copy) NSString *lrcPath;
+
+@property (nonatomic, strong) MOLrc *lrc;
 
 
 @end

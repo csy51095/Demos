@@ -17,6 +17,8 @@
 		CD39788124C6E883003303F0 /* MOMusicPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39787F24C6E883003303F0 /* MOMusicPlayerController.m */; };
 		CD39788A24C6ED38003303F0 /* MOMusicPanelSongView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39788924C6ED38003303F0 /* MOMusicPanelSongView.m */; };
 		CD39788D24C70847003303F0 /* MOMusicPanelLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39788C24C70847003303F0 /* MOMusicPanelLrcView.m */; };
+		CD39789424C7362E003303F0 /* MOLrc.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39789324C7362E003303F0 /* MOLrc.m */; };
+		CD39789724C73CD3003303F0 /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = CD39789624C73CD3003303F0 /* NSString+Substring.m */; };
 		CD6D61A424B5CAFD00A8958D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D61A324B5CAFD00A8958D /* AppDelegate.m */; };
 		CD6D61A724B5CAFD00A8958D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D61A624B5CAFD00A8958D /* SceneDelegate.m */; };
 		CD6D61AF24B5CAFF00A8958D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6D61AE24B5CAFF00A8958D /* Assets.xcassets */; };
@@ -57,6 +59,10 @@
 		CD39788B24C70847003303F0 /* MOMusicPanelLrcView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOMusicPanelLrcView.h; sourceTree = "<group>"; };
 		CD39788C24C70847003303F0 /* MOMusicPanelLrcView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOMusicPanelLrcView.m; sourceTree = "<group>"; };
 		CD39789124C70BDA003303F0 /* MONotificationName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MONotificationName.h; sourceTree = "<group>"; };
+		CD39789224C7362E003303F0 /* MOLrc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOLrc.h; sourceTree = "<group>"; };
+		CD39789324C7362E003303F0 /* MOLrc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOLrc.m; sourceTree = "<group>"; };
+		CD39789524C73CD3003303F0 /* NSString+Substring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Substring.h"; sourceTree = "<group>"; };
+		CD39789624C73CD3003303F0 /* NSString+Substring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Substring.m"; sourceTree = "<group>"; };
 		CD6D619F24B5CAFD00A8958D /* MusicPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6D61A224B5CAFD00A8958D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD6D61A324B5CAFD00A8958D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 		CD6D61C424B5D33E00A8958D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CD39789524C73CD3003303F0 /* NSString+Substring.h */,
+				CD39789624C73CD3003303F0 /* NSString+Substring.m */,
 				CD39787624C5CECA003303F0 /* UIImage+Tint.h */,
 				CD39787524C5CECA003303F0 /* UIImage+Tint.m */,
 				CD6D61C524B5D33E00A8958D /* ClassFactory.h */,
@@ -228,6 +236,8 @@
 				CD6D621F24B5DF9700A8958D /* MOPlayList.m */,
 				CD6D621B24B5DF8300A8958D /* MOSong.h */,
 				CD6D621C24B5DF8300A8958D /* MOSong.m */,
+				CD39789224C7362E003303F0 /* MOLrc.h */,
+				CD39789324C7362E003303F0 /* MOLrc.m */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";
@@ -377,7 +387,9 @@
 				CD39786524C1AC9A003303F0 /* MONewFeatureController.m in Sources */,
 				CD6D61BD24B5CF5100A8958D /* MOHomePageController.m in Sources */,
 				CD39788A24C6ED38003303F0 /* MOMusicPanelSongView.m in Sources */,
+				CD39789724C73CD3003303F0 /* NSString+Substring.m in Sources */,
 				CD6D622024B5DF9700A8958D /* MOPlayList.m in Sources */,
+				CD39789424C7362E003303F0 /* MOLrc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

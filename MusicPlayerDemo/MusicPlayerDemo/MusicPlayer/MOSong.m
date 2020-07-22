@@ -7,6 +7,7 @@
 //
 
 #import "MOSong.h"
+#import "MOLrc.h"
 
 @implementation MOSong
 
@@ -18,6 +19,9 @@
     self.coverPath = bundlePath.ap([self convertCorrectPath:dic[@"cover"]]);
     self.mp3Path = bundlePath.ap([self convertCorrectPath:dic[@"mp3"]]);
     self.lrcPath = bundlePath.ap([self convertCorrectPath:dic[@"lrc"]]);
+    
+    NSString *lrc = [NSString stringWithContentsOfFile:self.lrcPath encoding:NSUTF8StringEncoding error:nil];
+    self.lrc = [MOLrc.alloc initWithLrc:lrc];
     
     return YES;
 }
