@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MOLrcPart : NSObject
 
+@property (nonatomic, assign) CGFloat unknown;
 @property (nonatomic, assign) CGFloat duration;
 @property (nonatomic, copy) NSString *text;
 

@@ -14,11 +14,18 @@
 - (instancetype)initWithString:(NSString *)string {
     self = [super init];
     if (self) {
+        self.unknown = [[string substringWithinBoundsLeft:@"(" right:@","] floatValue];
         self.duration = [[string substringWithinBoundsLeft:@"," right:@")"] floatValue];
         NSRange range = [string rangeOfString:@")"];
         self.text = [string substringFromIndex:range.location +1];
     }
     return self;
+}
+
+- (NSString *)description {
+    NSMutableString *desc = NSMutableString.string;
+    [desc appendFormat:@"\"%@\" 耗时:%f", self.text, self.duration];
+    return desc.copy;
 }
 
 @end
@@ -54,6 +61,18 @@
     }
     return self;
 }
+
+
+- (NSString *)description {
+    NSMutableString *desc = NSMutableString.string;
+    [desc appendString:[super description]];
+    [desc appendFormat:@"\n行开始时间：%f\n行耗时：%f\n", self.beginTime, self.duration];
+    for (MOLrcPart *part in self.parts) {
+        [desc appendFormat:@"%@\n", part];
+    }
+    return desc.copy;
+}
+
 @end
 
 
@@ -76,6 +95,17 @@
         }
         self.lines = lines.copy;
     }
+    NSLog(@"%@", self);
     return self;
+}
+
+
+- (NSString *)description {
+    NSMutableString *desc = NSMutableString.string;
+    [desc appendFormat:@"\n%@\n",[super description]];
+    for (MOLrcLine *line in self.lines) {
+        [desc appendFormat:@"%@\n\n\n", line];
+    }
+    return desc.copy;
 }
 @end
