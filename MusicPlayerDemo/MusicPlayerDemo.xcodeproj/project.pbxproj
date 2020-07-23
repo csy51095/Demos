@@ -130,6 +130,8 @@
 				CD39788924C6ED38003303F0 /* MOMusicPanelSongView.m */,
 				CD39788B24C70847003303F0 /* MOMusicPanelLrcView.h */,
 				CD39788C24C70847003303F0 /* MOMusicPanelLrcView.m */,
+				CD39789824C95A5F003303F0 /* MOLrcBlendLabel.h */,
+				CD39789924C95A5F003303F0 /* MOLrcBlendLabel.m */,
 			);
 			path = MusicPlayerController;
 			sourceTree = "<group>";
@@ -241,8 +243,6 @@
 				CD6D621C24B5DF8300A8958D /* MOSong.m */,
 				CD39789224C7362E003303F0 /* MOLrc.h */,
 				CD39789324C7362E003303F0 /* MOLrc.m */,
-				CD39789824C95A5F003303F0 /* MOLrcBlendLabel.h */,
-				CD39789924C95A5F003303F0 /* MOLrcBlendLabel.m */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";

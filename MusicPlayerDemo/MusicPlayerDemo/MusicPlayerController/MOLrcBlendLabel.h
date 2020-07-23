@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MOLrcBlendLabel : UILabel
 
+@property (nonatomic, strong) UIColor *highlightedColor;
+
+- (void)canTint:(BOOL)canTint;
+
+- (void)tintPercent:(CGFloat)percent;
+
 
 @end
 

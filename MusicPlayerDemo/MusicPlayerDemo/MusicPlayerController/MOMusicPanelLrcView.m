@@ -37,7 +37,7 @@
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.alwaysBounceVertical = YES;
-    scrollView.showsVerticalScrollIndicator = YES;
+    scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView = scrollView;
     
     UIButton *playBtn = Button.img(IMAGE(@"btn_play_normal")).selectedImg(IMAGE(@"btn_pause_normal")).onClick(^{
@@ -87,6 +87,8 @@
     for (MOLrcLine *line in song.lrc.lines) {
         MOLrcBlendLabel *label = MOLrcBlendLabel.new;
         label.text  = line.lineText;
+        label.textColor = UIColor.whiteColor;
+        label.highlightedColor = WheatColor;
         label.font = [UIFont systemFontOfSize:15];
         
         [self.containerView addSubview: label];
