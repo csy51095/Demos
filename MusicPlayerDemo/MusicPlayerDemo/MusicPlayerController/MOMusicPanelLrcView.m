@@ -8,15 +8,15 @@
 
 #import "MOMusicPanelLrcView.h"
 
-@implementation MOMusicPanelLrcView
+@interface MOMusicPanelLrcView ()
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+@property (nonatomic, weak) UILabel *titleLab;
+@property (nonatomic, weak) UILabel *singerLab;
+@property (nonatomic, weak) UIButton *playBtn;
+@property (nonatomic, weak) UIView *containerView;
+@end
+
+@implementation MOMusicPanelLrcView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -27,7 +27,36 @@
 
 - (void)setup {
     
-    self.bgColor(@"red");
+    UILabel *titleLab = Label.color(@"white").fnt(20);
+    self.titleLab = titleLab;
+    
+    UILabel *singerLab = Label.color(@"white").fnt(15);
+    self.singerLab = singerLab;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.alwaysBounceVertical = YES;
+    scrollView.showsVerticalScrollIndicator = YES;
+    
+    UIButton *playBtn = Button.img(IMAGE(@"btn_play_normal")).selectedImg(IMAGE(@"btn_pause_normal")).onClick(^{
+        if (self.playBtnDidClickedBlock) {
+            self.playBtnDidClickedBlock();
+        }
+    }).fixWH(30,30);
+    self.playBtn = playBtn;
+    
+    VerStack(titleLab, @(10),
+             singerLab, @(10),
+             HorStack(@(25), scrollView, @(25)),
+             NERSpring,
+             @(15),
+             HorStack(NERSpring, playBtn, @(20)),
+             @(20)).embedIn(self);
+    
+    UIView *containerView = View.embedIn(scrollView).makeCons(^{
+        make.width.height.equal.superview.constants(0);
+    });
+    containerView.bgColor(WheatColor);
+    self.containerView = containerView;
 }
 
 

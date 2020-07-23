@@ -80,11 +80,13 @@
     
     NERStack *bottomStack = HorStack(NERSpring, preBtn, @(30), playBtn, @(30), nextBtn, NERSpring);
     
-    VerStack(HorStack(NERSpring,coverImgView,NERSpring).centerAlignment,
-             @(30),
-             titleLab, @(15),
-             singerLab,@(20),
-             sliderStack, @(20), bottomStack).embedIn(self, 0, 20, 40, 20);
+    CGFloat width = Screen.width -40;
+    NERStack *coverStack = HorStack(NERSpring,coverImgView,NERSpring).fixWH(width, width);
+    VerStack(coverStack,
+             NERSpring,
+             titleLab, @(15), singerLab,@(20),
+             sliderStack, @(20),
+             bottomStack).embedIn(self, 0, 20, 40, 20);
 }
 
 

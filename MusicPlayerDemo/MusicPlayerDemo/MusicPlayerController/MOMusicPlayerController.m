@@ -104,6 +104,10 @@
     VerStack(topStack,
              @(30), scrollView
              ).embedIn(effectView.contentView, 20, 0, 0, 0);
+    
+    scrollView.makeCons(^{
+        make.width.equal.superview.constants(0);
+    });
 }
 
 - (void)setupAction {
@@ -125,6 +129,15 @@
 
     _songView.sliderValueChangedBlock = ^(CGFloat value) {
         [MusicPlayer setCurrentTime: value *MusicPlayer.totalTime];
+    };
+    
+    
+    _lrcView.playBtnDidClickedBlock = ^{
+        if (MusicPlayer.status == MOMusicPlayerStatusPause) {
+            [MusicPlayer play];
+        } else {
+            [MusicPlayer pause];
+        }
     };
 }
 
