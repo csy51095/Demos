@@ -193,7 +193,7 @@
 
 - (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime {
     [self.songView refreshUIWithCurrentTime:currentTime totalTime:totalTime];
-    [self.lrcView refreshUIWithCurrentTime:currentTime totalTime:totalTime];
+    [self.lrcView refreshUIWithCurrentTime:currentTime];
 }
 
 - (void)dealloc {

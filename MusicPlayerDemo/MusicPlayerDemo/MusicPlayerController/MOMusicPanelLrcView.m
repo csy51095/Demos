@@ -9,7 +9,7 @@
 #import "MOMusicPanelLrcView.h"
 #import "MOLrcBlendLabel.h"
 
-@interface MOMusicPanelLrcView ()
+@interface MOMusicPanelLrcView () <UIScrollViewDelegate>
 
 @property (nonatomic, weak) UILabel *titleLab;
 @property (nonatomic, weak) UILabel *singerLab;
@@ -38,6 +38,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.alwaysBounceVertical = YES;
     scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.delegate = self;
     self.scrollView = scrollView;
     
     UIButton *playBtn = Button.img(IMAGE(@"btn_play_normal")).selectedImg(IMAGE(@"btn_pause_normal")).onClick(^{
@@ -49,8 +50,7 @@
     
     VerStack(titleLab, @(10),
              singerLab, @(10),
-             HorStack(scrollView),
-             NERSpring,
+             HorStack(scrollView).lowHugging,
              @(15),
              HorStack(NERSpring, playBtn)
              ).embedIn(self, 0,25,20, 25);
@@ -73,7 +73,7 @@
 }
 
 
-- (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime {
+- (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime {
     
     
 }
@@ -98,8 +98,7 @@
     [labels enumerateObjectsUsingBlock:^(MOLrcBlendLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx == 0) {
             obj.makeCons(^{
-                make.top.equal.superview.constants(30);
-                make.left.equal.superview.constants(0);
+                make.top.left.equal.superview.constants(0);
             });
         } else {
             UILabel *prevLab = labels[idx-1];
@@ -111,9 +110,31 @@
     }];
     
     self.containerView.makeCons(^{
-        make.bottom.equal.view(labels.lastObject).constants(20);
+        make.bottom.equal.view(labels.lastObject).constants(0);
     });
+    
+    [self layoutIfNeeded];
+    CGFloat insetOffset = 50;
+    CGFloat labelHeight = labels.firstObject.bounds.size.height;
+    CGFloat insetOffset_bottom = _scrollView.h - insetOffset - labelHeight;
+    
+    _scrollView.contentInset = UIEdgeInsetsMake(insetOffset , 0, insetOffset_bottom, 0);
+    [_scrollView setContentOffset:CGPointMake(0, -insetOffset)];
+    
+    // auxiliary line
+    CGFloat auxiliaryLineOffset = insetOffset + labelHeight *0.5;
+    View.bgColor(@"red").addTo(self).makeCons(^{
+        make.height.equal.constants(2);
+        make.left.right.equal.superview.constants(0);
+        make.centerY.equal.view(self->_scrollView).top.constants(auxiliaryLineOffset);
+    });
+    
 }
 
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"-----%@", NSStringFromCGPoint(scrollView.contentOffset));
+}
 
 @end

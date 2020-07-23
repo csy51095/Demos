@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status;
 - (void)refreshUIWithSong:(MOSong *)song;
-- (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime;
+- (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime;
 @end
 
 NS_ASSUME_NONNULL_END
