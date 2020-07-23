@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class MOLrc;
+#import "MOLrc.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

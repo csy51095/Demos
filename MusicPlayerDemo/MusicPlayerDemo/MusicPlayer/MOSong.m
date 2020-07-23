@@ -7,7 +7,6 @@
 //
 
 #import "MOSong.h"
-#import "MOLrc.h"
 
 @implementation MOSong
 
