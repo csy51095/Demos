@@ -34,6 +34,7 @@
 @interface MOLrcLine ()
 
 @property (nonatomic, copy) NSArray <MOLrcPart *> *parts;
+@property (nonatomic, copy) NSString *lineText;
 @end
 
 @implementation MOLrcLine
@@ -62,6 +63,16 @@
     return self;
 }
 
+- (NSString *)lineText {
+    if (!_lineText) {
+        NSMutableString *text = NSMutableString.string;
+        for (MOLrcPart *part in self.parts) {
+            [text appendString: part.text];
+        }
+        _lineText = text.copy;
+    }
+    return _lineText;
+}
 
 - (NSString *)description {
     NSMutableString *desc = NSMutableString.string;
@@ -95,7 +106,7 @@
         }
         self.lines = lines.copy;
     }
-    NSLog(@"%@", self);
+//    NSLog(@"%@", self);
     return self;
 }
 

@@ -180,6 +180,7 @@
 
 - (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
     [self.songView refreshUIWithPlayerStatus:status];
+    [self.lrcView refreshUIWithPlayerStatus:status];
 }
 
 
@@ -187,10 +188,12 @@
     UIImage *coverImage = [UIImage imageWithContentsOfFile:song.coverPath];
     _backgroundImgView.image = coverImage;
     [self.songView refreshUIWithSong:song];
+    [self.lrcView refreshUIWithSong:song];
 }
 
 - (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime {
     [self.songView refreshUIWithCurrentTime:currentTime totalTime:totalTime];
+    [self.lrcView refreshUIWithCurrentTime:currentTime totalTime:totalTime];
 }
 
 - (void)dealloc {

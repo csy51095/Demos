@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MOMusicPanelLrcView : UIView
 
 @property (nonatomic, copy) void(^playBtnDidClickedBlock)(void);
+
+- (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status;
+- (void)refreshUIWithSong:(MOSong *)song;
+- (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime;
 @end
 
 NS_ASSUME_NONNULL_END

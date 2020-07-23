@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat duration;
 
 @property (nonatomic, copy, readonly) NSArray <MOLrcPart *> *parts;
+@property (nonatomic, copy, readonly) NSString *lineText;
 
 @end
 

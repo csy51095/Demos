@@ -41,22 +41,38 @@
         if (self.playBtnDidClickedBlock) {
             self.playBtnDidClickedBlock();
         }
-    }).fixWH(30,30);
+    }).touchInsets(-10,-10,-10,-10).fixWH(30,30);
     self.playBtn = playBtn;
     
     VerStack(titleLab, @(10),
              singerLab, @(10),
-             HorStack(@(25), scrollView, @(25)),
+             HorStack(scrollView),
              NERSpring,
              @(15),
-             HorStack(NERSpring, playBtn, @(20)),
-             @(20)).embedIn(self);
+             HorStack(NERSpring, playBtn)
+             ).embedIn(self, 0,25,20, 25);
     
     UIView *containerView = View.embedIn(scrollView).makeCons(^{
         make.width.height.equal.superview.constants(0);
     });
     containerView.bgColor(WheatColor);
     self.containerView = containerView;
+}
+
+- (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
+    self.playBtn.selected = status == MOMusicPlayerStatusPlaying;
+}
+
+
+- (void)refreshUIWithSong:(MOSong *)song {
+    _titleLab.text = song.name;
+    _singerLab.text = song.singer;
+}
+
+
+- (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime totalTime:(NSTimeInterval)totalTime {
+    
+    
 }
 
 
