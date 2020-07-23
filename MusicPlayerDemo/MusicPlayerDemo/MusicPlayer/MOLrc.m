@@ -47,7 +47,7 @@
         self.beginTime = [[frontPart substringToIndex:range.location] floatValue];
         self.duration = [[frontPart substringFromIndex:range.location +1] floatValue];
         
-        NSString *pattern = @"\\([\\d]+,[\\d]+\\)[\\w\\-]+";
+        NSString *pattern = @"\\([\\d]+,[\\d]+\\)[\\w\\-\\s]+";
         NSRegularExpression *exp = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
         
         NSArray <NSTextCheckingResult *>*matchs = [exp matchesInString:lineString options:NSMatchingReportProgress range:NSMakeRange(0, lineString.length)];
