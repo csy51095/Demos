@@ -78,25 +78,27 @@
 
 
 - (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime {
+    // 由当前时间取得对应 label
     MOLrcBlendLabel *label = [self locateLabelWithCurrentTime:currentTime];
     if (!label) return;
     
     // 刚结束的上句
     if (self.currentLabel && label != self.currentLabel) {
+        // 重置 label 状态
         self.currentLabel.font = [UIFont systemFontOfSize:15];
         [self.currentLabel canTint:NO];
-        
         // 移至下句
         [_scrollView setContentOffset:CGPointMake(0, label.frame.origin.y - _scrollView.contentInset.top) animated:YES];
     }
     
+    // 歌词行字体放大并标识可以进行着色
     label.font = [UIFont systemFontOfSize:20];
     [label canTint:YES];
     
     // 歌词着色
-    CGFloat lineDuration = label.line.duration;
-    CGFloat lapsed = currentTime - label.beginTime;
-    CGFloat percent = 0;
+    CGFloat lineDuration = label.line.duration;  // 整行时长
+    CGFloat lapsed = currentTime - label.beginTime; // 在行内流逝的时间
+    CGFloat percent = 0; // 着色百分比
     for (MOLrcPart *part in label.line.parts) {
         if (lapsed - part.duration >= 0) {
             // 整字部分
@@ -110,9 +112,9 @@
     }
     [label tintPercent:percent];
     self.currentLabel = label;
-    
 }
 
+/** 由当前时间定为到对应label */
 - (MOLrcBlendLabel *)locateLabelWithCurrentTime:(NSTimeInterval)currentTime {
     for (MOLrcBlendLabel *label in self.containerView.subviews) {
         if (![label isKindOfClass:MOLrcBlendLabel.class]) continue;

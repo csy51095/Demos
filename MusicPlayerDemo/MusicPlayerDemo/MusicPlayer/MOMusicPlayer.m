@@ -68,9 +68,8 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     self.status = MOMusicPlayerStatusPlaying;
     
     /** 后台播放：
-     1.cabability -> background Modes -> audio
-     2.激活：AudioSession setActive -> YES
-     3.设置后台播放种类: AudioSession setCategory -> AVAudioSessionCategoryPlayback
+     激活：AudioSession setActive -> YES
+     设置后台播放种类: AudioSession setCategory -> AVAudioSessionCategoryPlayback
      */
     dispatch_queue_t queue = dispatch_queue_create("concurrent", DISPATCH_QUEUE_CONCURRENT);
     dispatch_async(queue, ^{
@@ -180,14 +179,14 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     */
     CGFloat progress = _audioPlayer.currentTime / _audioPlayer.duration;
     NSString *title = self.currentSong.name;
-    NSString *lrc = [self.currentSong.lrc findLineWithCurrentTime: self.currentTime *1000].lineText ?:@"         ";
+    NSString *lrc = [self.currentSong.lrc findLineWithCurrentTime: self.currentTime *1000].lineText ?:@"         "; // 用来占位
     
     // ios10
     MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithBoundsSize:CGSizeMake(0, 0) requestHandler:^UIImage * _Nonnull(CGSize size) {
         UIImage *image = [UIImage imageWithContentsOfFile: self.currentSong.coverPath];
         return image;
     }];
-    // 更新系统音频
+    // 更新系统音频 <MediaPlayer/MediaPlayer.h>
     MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
     center.nowPlayingInfo = @{MPNowPlayingInfoPropertyMediaType: @(MPNowPlayingInfoMediaTypeAudio),
                               MPNowPlayingInfoPropertyElapsedPlaybackTime: @(_audioPlayer.currentTime),
