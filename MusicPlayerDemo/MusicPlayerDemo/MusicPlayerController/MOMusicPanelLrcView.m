@@ -184,7 +184,7 @@
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"-----%@", NSStringFromCGPoint(scrollView.contentOffset));
+//    NSLog(@"-----%@", NSStringFromCGPoint(scrollView.contentOffset));
 }
 
 @end

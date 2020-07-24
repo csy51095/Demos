@@ -65,6 +65,14 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
     
     self.selectedIndex = index;
     self.status = MOMusicPlayerStatusPlaying;
+    
+    /** 后台播放：
+     1.cabability -> background Modes -> audio
+     2.激活：AudioSession setActive -> YES
+     3.设置后台播放种类: AudioSession setCategory -> AVAudioSessionCategoryPlayback
+     */
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 }
 
 - (void)play {
