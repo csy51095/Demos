@@ -9,6 +9,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#define AuxiliaryX
+
 #import <NerdyUI/NerdyUI.h>
 #import <Masonry/Masonry.h>
 #import <YYModel.h>

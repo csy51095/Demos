@@ -27,10 +27,13 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    if (!_canTint) return;
 
-    UIColor *color = _highlightedColor ?: UIColor.blackColor;
-    CGFloat width = self.bounds.size.width *_tintPercent;
+    UIColor *origalColor = self.textColor ?: UIColor.whiteColor;
+    UIColor *tintColor = _highlightedColor ?: UIColor.blackColor;
+    
+    UIColor *color = _canTint? tintColor: origalColor;
+    CGFloat width = _canTint? self.bounds.size.width *_tintPercent : 0;
+    
     CGRect tintRect = CGRectMake(0, 0, width, self.bounds.size.height);
     [color set];
     

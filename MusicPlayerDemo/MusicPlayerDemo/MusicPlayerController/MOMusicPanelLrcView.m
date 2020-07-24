@@ -18,7 +18,6 @@
 @property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, weak) UIView *containerView;
 
-@property (nonatomic, strong) NSMutableArray <MOLrcBlendLabel *> *labels;
 @property (nonatomic, weak) MOLrcBlendLabel *currentLabel;
 
 @end
@@ -79,27 +78,47 @@
 
 
 - (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime {
-//    [self locateLabelWithCurrentTime:currentTime];
+    MOLrcBlendLabel *label = [self locateLabelWithCurrentTime:currentTime];
+    if (!label) return;
+    
+    // 刚结束的上句
+    if (self.currentLabel && label != self.currentLabel) {
+        self.currentLabel.font = [UIFont systemFontOfSize:15];
+        [self.currentLabel canTint:NO];
+        
+        // 移至下句
+        [_scrollView setContentOffset:CGPointMake(0, label.frame.origin.y - _scrollView.contentInset.top) animated:YES];
+    }
+    
+    label.font = [UIFont systemFontOfSize:20];
+    [label canTint:YES];
+    
+    // 歌词着色
+    CGFloat lineDuration = label.line.duration;
+    CGFloat lapsed = currentTime - label.beginTime;
+    CGFloat percent = 0;
+    for (MOLrcPart *part in label.line.parts) {
+        if (lapsed - part.duration >= 0) {
+            // 整字部分
+            percent += part.duration  / lineDuration;
+            lapsed -= part.duration;
+        } else {
+            // 剩余部分
+            percent += lapsed / lineDuration;
+            break;
+        };
+    }
+    [label tintPercent:percent];
+    self.currentLabel = label;
     
 }
 
 - (MOLrcBlendLabel *)locateLabelWithCurrentTime:(NSTimeInterval)currentTime {
-    
-    currentTime *= 1000;
-    for (MOLrcBlendLabel *label in self.labels) {
-        if (currentTime < label.beginTime) continue;
-        if (currentTime < label.endTime) {
-            label.font = Fnt(20);
-            
-            self.currentLabel = label;
-            
-            CGFloat offsetY = label.y - label.h;
-            [self.scrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
-            
-        } else {
-            self.currentLabel.font = Fnt(15);
-            
-        }
+    for (MOLrcBlendLabel *label in self.containerView.subviews) {
+        if (![label isKindOfClass:MOLrcBlendLabel.class]) continue;
+        if (currentTime >= label.beginTime && currentTime <= label.endTime) {
+            return label;
+        };
     }
     return nil;
 }
@@ -122,7 +141,6 @@
         [self.containerView addSubview: label];
         [labels addObject:label];
     }
-    self.labels = labels;
     
     CGFloat labelHeight = 30.0;
     [labels enumerateObjectsUsingBlock:^(MOLrcBlendLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -145,23 +163,22 @@
         make.bottom.equal.view(labels.lastObject).constants(0);
     });
     
-    self.containerView.bgColor(@"gray");
-    self.scrollView.bgColor(@"red");
     [self layoutIfNeeded];
     
     CGFloat topOffset = 50;
     CGFloat bottomOffset = _scrollView.h - topOffset - labelHeight;
     _scrollView.contentInset = UIEdgeInsetsMake(topOffset , 0, bottomOffset, 0);
     [_scrollView setContentOffset:CGPointMake(0, -_scrollView.contentInset.top)];
-    
-    // auxiliary line
+
+#ifdef Auxiliary
+    // 歌词辅助线
     CGFloat auxiliaryLineOffset = topOffset + labelHeight/2;
     View.bgColor(@"red").addTo(self).makeCons(^{
         make.height.equal.constants(2);
         make.left.right.equal.superview.constants(0);
         make.centerY.equal.view(self->_scrollView).top.constants(auxiliaryLineOffset);
     });
-//
+#endif
 }
 
 
