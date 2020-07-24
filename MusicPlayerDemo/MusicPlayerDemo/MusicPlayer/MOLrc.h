@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithLrc:(NSString *)lrc;
 
+- (MOLrcLine *)findLineWithCurrentTime:(NSTimeInterval)currentTime;
 @end
 
 NS_ASSUME_NONNULL_END

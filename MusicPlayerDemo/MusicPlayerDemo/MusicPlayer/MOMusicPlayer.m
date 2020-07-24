@@ -7,6 +7,7 @@
 //
 
 #import "MOMusicPlayer.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -71,8 +72,12 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
      2.激活：AudioSession setActive -> YES
      3.设置后台播放种类: AudioSession setCategory -> AVAudioSessionCategoryPlayback
      */
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    dispatch_queue_t queue = dispatch_queue_create("concurrent", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    });
+    
 }
 
 - (void)play {
@@ -164,6 +169,35 @@ IMPLEMENTATION_SINGLETON(MOMusicPlayer)
                                                         object:self
                                                       userInfo:@{kCurrentTime: @(_audioPlayer.currentTime),
                                                                  kTotalTime: @(_audioPlayer.duration)}];
+    
+    [self updateApplicationMusicPanelInfo];
+}
+
+- (void)updateApplicationMusicPanelInfo {
+    /** 动态展示歌词方案(iOS 10 前后歌词面板样式不同)
+    之前：重新通过歌词生成图片设置到 MPMediaItemPropertyArtwork
+    目前：将歌词设置到 MPMediaItemPropertyArtist
+    */
+    CGFloat progress = _audioPlayer.currentTime / _audioPlayer.duration;
+    NSString *title = self.currentSong.name;
+    NSString *lrc = [self.currentSong.lrc findLineWithCurrentTime: self.currentTime *1000].lineText ?:@"         ";
+    
+    // ios10
+    MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithBoundsSize:CGSizeMake(0, 0) requestHandler:^UIImage * _Nonnull(CGSize size) {
+        UIImage *image = [UIImage imageWithContentsOfFile: self.currentSong.coverPath];
+        return image;
+    }];
+    // 更新系统音频
+    MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
+    center.nowPlayingInfo = @{MPNowPlayingInfoPropertyMediaType: @(MPNowPlayingInfoMediaTypeAudio),
+                              MPNowPlayingInfoPropertyElapsedPlaybackTime: @(_audioPlayer.currentTime),
+                              MPMediaItemPropertyPlaybackDuration: @(_audioPlayer.duration),
+                              MPNowPlayingInfoPropertyPlaybackProgress: @(progress),
+
+                              MPMediaItemPropertyTitle: title,
+                              MPMediaItemPropertyArtist: lrc,
+                              MPMediaItemPropertyArtwork: artwork
+    };
 }
 
 

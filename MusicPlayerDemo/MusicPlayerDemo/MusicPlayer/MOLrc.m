@@ -110,6 +110,17 @@
     return self;
 }
 
+- (MOLrcLine *)findLineWithCurrentTime:(NSTimeInterval)currentTime {
+    for (MOLrcLine *line in self.lines) {
+        CGFloat beginTime = line.beginTime;
+        CGFloat endTime = line.beginTime + line.duration;
+        if (currentTime >= beginTime && currentTime <= endTime) {
+            return line;
+        }
+    }
+    return nil;
+}
+
 
 - (NSString *)description {
     NSMutableString *desc = NSMutableString.string;

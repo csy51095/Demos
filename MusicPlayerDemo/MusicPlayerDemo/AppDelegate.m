@@ -17,9 +17,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    /** 注册系统级面板
+     Appdelegate：接受远程事件，并处理
+     MusicPlayer：更新系统锁屏界面状态
+     */
+    [UIApplication.sharedApplication beginReceivingRemoteControlEvents];
+    
     return YES;
 }
 
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    if (event.type == UIEventTypeRemoteControl) {
+        switch (event.subtype) {
+            case UIEventSubtypeRemoteControlPlay:
+                [MusicPlayer play];
+                break;
+            case UIEventSubtypeRemoteControlPause:
+            case UIEventSubtypeRemoteControlStop:
+                [MusicPlayer pause];
+                break;
+            case UIEventSubtypeRemoteControlNextTrack:
+                [MusicPlayer next];
+                break;
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                [MusicPlayer previous];
+                break;
+            default:
+                break;
+        }
+    }
+}
 
 #pragma mark - UISceneSession lifecycle
 
