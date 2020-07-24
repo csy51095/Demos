@@ -8,6 +8,7 @@
 
 #import "MOMusicPanelLrcView.h"
 #import "MOLrcBlendLabel.h"
+#import "MOLrcBlendLabel+LineModel.h"
 
 @interface MOMusicPanelLrcView () <UIScrollViewDelegate>
 
@@ -16,6 +17,10 @@
 @property (nonatomic, weak) UIButton *playBtn;
 @property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, weak) UIView *containerView;
+
+@property (nonatomic, strong) NSMutableArray <MOLrcBlendLabel *> *labels;
+@property (nonatomic, weak) MOLrcBlendLabel *currentLabel;
+
 @end
 
 @implementation MOMusicPanelLrcView
@@ -74,9 +79,31 @@
 
 
 - (void)refreshUIWithCurrentTime:(NSTimeInterval)currentTime {
-    
+//    [self locateLabelWithCurrentTime:currentTime];
     
 }
+
+- (MOLrcBlendLabel *)locateLabelWithCurrentTime:(NSTimeInterval)currentTime {
+    
+    currentTime *= 1000;
+    for (MOLrcBlendLabel *label in self.labels) {
+        if (currentTime < label.beginTime) continue;
+        if (currentTime < label.endTime) {
+            label.font = Fnt(20);
+            
+            self.currentLabel = label;
+            
+            CGFloat offsetY = label.y - label.h;
+            [self.scrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];
+            
+        } else {
+            self.currentLabel.font = Fnt(15);
+            
+        }
+    }
+    return nil;
+}
+
 
 - (void)createLrcPanelWithSong:(MOSong *)song {
     [self.containerView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -90,21 +117,26 @@
         label.textColor = UIColor.whiteColor;
         label.highlightedColor = WheatColor;
         label.font = [UIFont systemFontOfSize:15];
+        label.line = line;
         
         [self.containerView addSubview: label];
         [labels addObject:label];
     }
+    self.labels = labels;
     
+    CGFloat labelHeight = 30.0;
     [labels enumerateObjectsUsingBlock:^(MOLrcBlendLabel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (idx == 0) {
             obj.makeCons(^{
                 make.top.left.equal.superview.constants(0);
+                make.height.equal.constants(labelHeight);
             });
         } else {
             UILabel *prevLab = labels[idx-1];
             obj.makeCons(^{
                 make.left.equal.superview.constants(0);
                 make.top.equal.view(prevLab).bottom.constants(10);
+                make.height.equal.constants(labelHeight);
             });
         }
     }];
@@ -113,22 +145,23 @@
         make.bottom.equal.view(labels.lastObject).constants(0);
     });
     
+    self.containerView.bgColor(@"gray");
+    self.scrollView.bgColor(@"red");
     [self layoutIfNeeded];
-    CGFloat insetOffset = 50;
-    CGFloat labelHeight = labels.firstObject.bounds.size.height;
-    CGFloat insetOffset_bottom = _scrollView.h - insetOffset - labelHeight;
     
-    _scrollView.contentInset = UIEdgeInsetsMake(insetOffset , 0, insetOffset_bottom, 0);
-    [_scrollView setContentOffset:CGPointMake(0, -insetOffset)];
+    CGFloat topOffset = 50;
+    CGFloat bottomOffset = _scrollView.h - topOffset - labelHeight;
+    _scrollView.contentInset = UIEdgeInsetsMake(topOffset , 0, bottomOffset, 0);
+    [_scrollView setContentOffset:CGPointMake(0, -_scrollView.contentInset.top)];
     
     // auxiliary line
-    CGFloat auxiliaryLineOffset = insetOffset + labelHeight *0.5;
+    CGFloat auxiliaryLineOffset = topOffset + labelHeight/2;
     View.bgColor(@"red").addTo(self).makeCons(^{
         make.height.equal.constants(2);
         make.left.right.equal.superview.constants(0);
         make.centerY.equal.view(self->_scrollView).top.constants(auxiliaryLineOffset);
     });
-    
+//
 }
 
 
