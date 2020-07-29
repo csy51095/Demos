@@ -13,13 +13,15 @@
 #import "MOMusicPanelSongView.h"
 #import "MOMusicPanelLrcView.h"
 
-@interface MOMusicPlayerController ()
+@interface MOMusicPlayerController () <UIScrollViewDelegate>
 
 @property (nonatomic, weak) UIImageView *backgroundImgView;
 
 @property (nonatomic, weak) MOMusicPanelSongView *songView;
 @property (nonatomic, weak) MOMusicPanelLrcView *lrcView;
 
+@property (nonatomic, weak) UIView *line;
+@property (nonatomic, weak) UIScrollView *scrollView;
 @end
 
 @implementation MOMusicPlayerController
@@ -70,16 +72,28 @@
     }).touchInsets(-10,-10,-10,-10);
     
     Style(@"tagBtn").color(Theme_TextColorString).selectedColor(@"white").fnt(15);
-    UIButton *songBtn = Button.styles(@"tagBtn").str(LANGUAGE(@"歌曲"));
-    UIButton *lrcBtn = Button.styles(@"tagBtn").str(LANGUAGE(@"歌词"));
+    UIButton *songBtn = Button.styles(@"tagBtn").str(LANGUAGE(@"歌曲")).onClick(^{
+        [self.scrollView setContentOffset:CGPointMake(0,0) animated:YES];
+    });
     
-    NERStack *topStack = HorStack(@(20),closeBtn, NERSpring, songBtn,
-                                  @(5),Label.str(@"|").color(Theme_TextColorString),@(5), lrcBtn,
+    UIButton *lrcBtn = Button.styles(@"tagBtn").str(LANGUAGE(@"歌词")).onClick(^{
+        [self.scrollView setContentOffset:CGPointMake(Screen.width, 0) animated:YES];
+    });
+    
+    UIView *line = View.bgColor(Theme_TextColorString).fixWH(30 ,2);
+    self.line = line;
+    NERStack *selectStack = VerStack(HorStack(songBtn,@(5),Label.str(@"|").color(Theme_TextColorString),@(5), lrcBtn,),
+                                     line);
+    
+    
+    NERStack *topStack = HorStack(@(20),closeBtn, NERSpring, selectStack,
                                   NERSpring, shareBtn,@(20));
     
     UIScrollView *scrollView = [UIScrollView new];
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.delegate = self;
+    self.scrollView = scrollView;
     
     UIView *contentView = View.addTo(scrollView).makeCons(^{
         make.edge.equal.superview.constants(0);
@@ -139,6 +153,14 @@
             [MusicPlayer pause];
         }
     };
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat offset = scrollView.contentOffset.x *94 / scrollView.contentSize.width;
+    self.line.updateCons(^{
+        make.left.equal.superview.constants(offset);
+    });
 }
 
 #pragma mark - notification
