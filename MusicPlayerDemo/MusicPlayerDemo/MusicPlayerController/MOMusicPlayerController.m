@@ -82,8 +82,12 @@
     
     UIView *line = View.bgColor(Theme_TextColorString).fixWH(30 ,2);
     self.line = line;
-    NERStack *selectStack = VerStack(HorStack(songBtn,@(5),Label.str(@"|").color(Theme_TextColorString),@(5), lrcBtn,),
-                                     line);
+    NERStack *selectStack = HorStack(songBtn,@(5),Label.str(@"|").color(Theme_TextColorString),@(5), lrcBtn,);
+    
+    line.addTo(selectStack).makeCons(^{
+        make.leading.equal.superview.constants(0);
+        make.bottom.equal.superview.constants(0);
+    });
     
     
     NERStack *topStack = HorStack(@(20),closeBtn, NERSpring, selectStack,
@@ -159,7 +163,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offset = scrollView.contentOffset.x *94 / scrollView.contentSize.width;
     self.line.updateCons(^{
-        make.left.equal.superview.constants(offset);
+        make.leading.equal.superview.constants(offset);
     });
 }
 

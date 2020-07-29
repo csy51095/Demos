@@ -13,6 +13,9 @@
 
 @property (nonatomic, strong) AVPlayer *player;
 
+@property (nonatomic, weak) UIButton *skipBtn;
+@property (nonatomic, strong) NSTimer *timer;
+
 @end
 
 @implementation MONewFeatureController
@@ -35,25 +38,43 @@
     [self.view.layer addSublayer:layer];
     [self.player play];
     
-    CMTime duration = self.player.currentItem.asset.duration;
-    CGFloat time = duration.value *1.0 / duration.timescale;
-    CGFloat playTime;
-#ifdef DEBUG
-    playTime = 1;
-#else
-    playTime = time;
-#endif
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(playTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [layer removeFromSuperlayer];
+    UIButton *skipBtn = Button.str(@"5").fnt(13).bgColor(@"white").color(@"black").border(0.5,@"black").borderRadius(3).addTo(self.view).fixWH(60,30).makeCons(^{
+        make.top.equal.superview.constants(15);
+        make.right.equal.superview.constants(-20);
+    }).onClick(^{
         [self dismissViewControllerAnimated:YES completion:^{
             self.player = nil;
         }];
     });
+    skipBtn.userInteractionEnabled = NO;
+    self.skipBtn = skipBtn;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    static NSInteger count = 5;
+    __weak typeof(self) weak = self;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        count -= 1;
+        if (count >= 1) {
+            weak.skipBtn.str(@(count));
+        } else {
+            weak.skipBtn.str(@"跳过");
+            weak.skipBtn.userInteractionEnabled = YES;
+        }
+    }];
 }
 
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+- (void)dealloc {
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 @end

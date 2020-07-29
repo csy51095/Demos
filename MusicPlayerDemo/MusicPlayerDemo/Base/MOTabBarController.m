@@ -17,6 +17,7 @@
 
 @interface MOTabBarController ()
 @property (nonatomic, weak) UIButton *playBtn;
+@property (nonatomic, weak) UIImageView *coverImgView;
 @end
 
 @implementation MOTabBarController
@@ -38,6 +39,8 @@
     [self setupNotification];
     [self setupMusicBar];
     [self refreshUIWithPlayerStatus:MusicPlayer.status];
+    [self refreshUIWithSong:MusicPlayer.currentSong];
+    
 }
 
 - (void)setupAppearance {
@@ -97,18 +100,28 @@
         [MusicPlayer next];
     }).touchInsets(-20,-20,-20,-20);
     
-    UIView *musicBar = View.bgColor(@"#F5DEB3").borderRadius(25).fixHeight(50).embedIn(self.view, NERNull, 20, 54, 20).onClick(^{
+    UIView *musicBar = View.bgColor(@"#F5DEB3").borderRadius(25).fixHeight(50).embedIn(self.view, NERNull, 20, 54, 20);
+    musicBar.clipsToBounds = NO;
+    
+    UIImageView *coverImgView = ImageView.img(Theme_ButtonColor).fixWH(80, 80).border(1, Theme_TextColorString).borderRadius(10).onClick(^{
         MOMusicPlayerController *vc = [MOMusicPlayerController new];
         [self presentViewController:vc animated:YES completion:nil];
     });
+    self.coverImgView = coverImgView;
     
-    HorStack(NERSpring, preBtn, @(50), playBtn, @(50), nextBtn, NERSpring).embedIn(musicBar).centerAlignment;
+    HorStack(@(110), preBtn, NERSpring, playBtn, NERSpring, nextBtn, NERSpring).embedIn(musicBar).centerAlignment;
+    
+    coverImgView.addTo(musicBar).makeCons(^{
+        make.left.equal.superview.constants(0);
+        make.centerY.equal.superview.constants(-10);
+    });
 }
 
 
 #pragma mark - notification
 - (void)setupNotification {
     [NotificationCenter addObserver:self selector:@selector(musicPlayerStatusDidChangedNotification:) name:MOMusicPlayerStatusDidChangedNotification object:nil];
+    [NotificationCenter addObserver:self selector:@selector(musicPlayerCurrentSongDidChangedNotification:) name:MOMusicPlayerCurrentSongDidChangedNotification object:nil];
 }
 
 - (void)teardownNotification {
@@ -120,8 +133,17 @@
     [self refreshUIWithPlayerStatus:status];
 }
 
+- (void)musicPlayerCurrentSongDidChangedNotification:(NSNotification *)notification {
+    MOSong *song = notification.userInfo[kMusicPlayerCurrentSong];
+    [self refreshUIWithSong:song];
+}
+
 - (void)refreshUIWithPlayerStatus:(MOMusicPlayerStatus)status {
     self.playBtn.str(status == MOMusicPlayerStatusPlaying? LANGUAGE(@"pause"): LANGUAGE(@"play"));
+}
+
+- (void)refreshUIWithSong:(MOSong *)song {
+    self.coverImgView.image = [UIImage imageWithContentsOfFile:song.coverPath];
 }
 
 - (void)dealloc {
