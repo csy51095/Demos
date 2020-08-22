@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		89E220547CAB2F76DA1E8B46 /* Pods_ButtonAlignmentDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BAA1BDF1EF4462A7FB59644 /* Pods_ButtonAlignmentDemo.framework */; };
+		CD3CA65B24F17D44004764B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3CA65A24F17D44004764B7 /* AppDelegate.m */; };
+		CD3CA65E24F17D44004764B7 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3CA65D24F17D44004764B7 /* SceneDelegate.m */; };
+		CD3CA66124F17D44004764B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3CA66024F17D44004764B7 /* ViewController.m */; };
+		CD3CA66424F17D44004764B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3CA66224F17D44004764B7 /* Main.storyboard */; };
+		CD3CA66624F17D48004764B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3CA66524F17D48004764B7 /* Assets.xcassets */; };
+		CD3CA66924F17D48004764B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3CA66724F17D48004764B7 /* LaunchScreen.storyboard */; };
+		CD3CA66C24F17D48004764B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3CA66B24F17D48004764B7 /* main.m */; };
+		CD3CA67624F17D62004764B7 /* UIButton+AttStrAlignment.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3CA67424F17D61004764B7 /* UIButton+AttStrAlignment.m */; };
+		CD3CA67724F17D62004764B7 /* UIButton+Alignment.m in Sources */ = {isa = PBXBuildFile; fileRef = CD3CA67524F17D62004764B7 /* UIButton+Alignment.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2E638FE786E939A78D71E447 /* Pods-ButtonAlignmentDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonAlignmentDemo.debug.xcconfig"; path = "Target Support Files/Pods-ButtonAlignmentDemo/Pods-ButtonAlignmentDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		63D2A1054D9BC2D64F73D2D7 /* Pods-ButtonAlignmentDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonAlignmentDemo.release.xcconfig"; path = "Target Support Files/Pods-ButtonAlignmentDemo/Pods-ButtonAlignmentDemo.release.xcconfig"; sourceTree = "<group>"; };
+		9BAA1BDF1EF4462A7FB59644 /* Pods_ButtonAlignmentDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ButtonAlignmentDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3CA65624F17D44004764B7 /* ButtonAlignmentDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonAlignmentDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3CA65924F17D44004764B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CD3CA65A24F17D44004764B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CD3CA65C24F17D44004764B7 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		CD3CA65D24F17D44004764B7 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		CD3CA65F24F17D44004764B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CD3CA66024F17D44004764B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CD3CA66324F17D44004764B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD3CA66524F17D48004764B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD3CA66824F17D48004764B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD3CA66A24F17D48004764B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD3CA66B24F17D48004764B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CD3CA67224F17D61004764B7 /* UIButton+AttStrAlignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AttStrAlignment.h"; sourceTree = "<group>"; };
+		CD3CA67324F17D61004764B7 /* UIButton+Alignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Alignment.h"; sourceTree = "<group>"; };
+		CD3CA67424F17D61004764B7 /* UIButton+AttStrAlignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AttStrAlignment.m"; sourceTree = "<group>"; };
+		CD3CA67524F17D62004764B7 /* UIButton+Alignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Alignment.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD3CA65324F17D44004764B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89E220547CAB2F76DA1E8B46 /* Pods_ButtonAlignmentDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4AACCDC24FB2772B3E712733 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E638FE786E939A78D71E447 /* Pods-ButtonAlignmentDemo.debug.xcconfig */,
+				63D2A1054D9BC2D64F73D2D7 /* Pods-ButtonAlignmentDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		95C57C585D1A3E80EF5D5997 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BAA1BDF1EF4462A7FB59644 /* Pods_ButtonAlignmentDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD3CA64D24F17D44004764B7 = {
+			isa = PBXGroup;
+			children = (
+				CD3CA65824F17D44004764B7 /* ButtonAlignmentDemo */,
+				CD3CA65724F17D44004764B7 /* Products */,
+				4AACCDC24FB2772B3E712733 /* Pods */,
+				95C57C585D1A3E80EF5D5997 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD3CA65724F17D44004764B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD3CA65624F17D44004764B7 /* ButtonAlignmentDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD3CA65824F17D44004764B7 /* ButtonAlignmentDemo */ = {
+			isa = PBXGroup;
+			children = (
+				CD3CA65924F17D44004764B7 /* AppDelegate.h */,
+				CD3CA65A24F17D44004764B7 /* AppDelegate.m */,
+				CD3CA65C24F17D44004764B7 /* SceneDelegate.h */,
+				CD3CA65D24F17D44004764B7 /* SceneDelegate.m */,
+				CD3CA65F24F17D44004764B7 /* ViewController.h */,
+				CD3CA66024F17D44004764B7 /* ViewController.m */,
+				CD3CA67324F17D61004764B7 /* UIButton+Alignment.h */,
+				CD3CA67524F17D62004764B7 /* UIButton+Alignment.m */,
+				CD3CA67224F17D61004764B7 /* UIButton+AttStrAlignment.h */,
+				CD3CA67424F17D61004764B7 /* UIButton+AttStrAlignment.m */,
+				CD3CA66224F17D44004764B7 /* Main.storyboard */,
+				CD3CA66524F17D48004764B7 /* Assets.xcassets */,
+				CD3CA66724F17D48004764B7 /* LaunchScreen.storyboard */,
+				CD3CA66A24F17D48004764B7 /* Info.plist */,
+				CD3CA66B24F17D48004764B7 /* main.m */,
+			);
+			path = ButtonAlignmentDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD3CA65524F17D44004764B7 /* ButtonAlignmentDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD3CA66F24F17D48004764B7 /* Build configuration list for PBXNativeTarget "ButtonAlignmentDemo" */;
+			buildPhases = (
+				E66A8B6A445D7B181BD47E9E /* [CP] Check Pods Manifest.lock */,
+				CD3CA65224F17D44004764B7 /* Sources */,
+				CD3CA65324F17D44004764B7 /* Frameworks */,
+				CD3CA65424F17D44004764B7 /* Resources */,
+				0F5C517B134CF418A2466E8E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ButtonAlignmentDemo;
+			productName = ButtonAlignmentDemo;
+			productReference = CD3CA65624F17D44004764B7 /* ButtonAlignmentDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD3CA64E24F17D44004764B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = Mo;
+				TargetAttributes = {
+					CD3CA65524F17D44004764B7 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = CD3CA65124F17D44004764B7 /* Build configuration list for PBXProject "ButtonAlignmentDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD3CA64D24F17D44004764B7;
+			productRefGroup = CD3CA65724F17D44004764B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD3CA65524F17D44004764B7 /* ButtonAlignmentDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD3CA65424F17D44004764B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3CA66924F17D48004764B7 /* LaunchScreen.storyboard in Resources */,
+				CD3CA66624F17D48004764B7 /* Assets.xcassets in Resources */,
+				CD3CA66424F17D44004764B7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F5C517B134CF418A2466E8E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ButtonAlignmentDemo/Pods-ButtonAlignmentDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ButtonAlignmentDemo/Pods-ButtonAlignmentDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ButtonAlignmentDemo/Pods-ButtonAlignmentDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E66A8B6A445D7B181BD47E9E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ButtonAlignmentDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD3CA65224F17D44004764B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3CA66124F17D44004764B7 /* ViewController.m in Sources */,
+				CD3CA67724F17D62004764B7 /* UIButton+Alignment.m in Sources */,
+				CD3CA65B24F17D44004764B7 /* AppDelegate.m in Sources */,
+				CD3CA66C24F17D48004764B7 /* main.m in Sources */,
+				CD3CA67624F17D62004764B7 /* UIButton+AttStrAlignment.m in Sources */,
+				CD3CA65E24F17D44004764B7 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CD3CA66224F17D44004764B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD3CA66324F17D44004764B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD3CA66724F17D48004764B7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD3CA66824F17D48004764B7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD3CA66D24F17D48004764B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CD3CA66E24F17D48004764B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD3CA67024F17D48004764B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E638FE786E939A78D71E447 /* Pods-ButtonAlignmentDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T265XVEUYV;
+				INFOPLIST_FILE = ButtonAlignmentDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = M.ButtonAlignmentDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD3CA67124F17D48004764B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63D2A1054D9BC2D64F73D2D7 /* Pods-ButtonAlignmentDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T265XVEUYV;
+				INFOPLIST_FILE = ButtonAlignmentDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = M.ButtonAlignmentDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD3CA65124F17D44004764B7 /* Build configuration list for PBXProject "ButtonAlignmentDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD3CA66D24F17D48004764B7 /* Debug */,
+				CD3CA66E24F17D48004764B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD3CA66F24F17D48004764B7 /* Build configuration list for PBXNativeTarget "ButtonAlignmentDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD3CA67024F17D48004764B7 /* Debug */,
+				CD3CA67124F17D48004764B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD3CA64E24F17D44004764B7 /* Project object */;
+}
